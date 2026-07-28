@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="22" fill="#2EAF7D"/>
+  <circle cx="42" cy="76" r="18" fill="white"/>
+  <rect x="35" y="22" width="14" height="57" rx="7" fill="white"/>
+  <rect x="39" y="35" width="6" height="40" rx="3" fill="#2EAF7D"/>
+  <path d="M72 35c12 15 20 25 20 37a20 20 0 1 1-40 0c0-12 8-22 20-37z" fill="white" opacity="0.9"/>
+  <text x="72" y="80" font-family="Arial,sans-serif" font-size="22" text-anchor="middle" fill="#2EAF7D" font-weight="bold">W</text>
+</svg>

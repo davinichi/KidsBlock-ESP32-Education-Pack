@@ -1,0 +1,269 @@
+﻿{
+  "packName": "KidsBlock ESP32 Education Pack",
+  "packVersion": "2.1.1",
+  "releaseDate": "2026-07-28",
+  "extensions": [
+    {
+      "category": "communication",
+      "folder": "wifisimple",
+      "displayName": "SimpleWiFi",
+      "version": "1.0.0"
+    },
+    {
+      "category": "communication",
+      "folder": "ntpclock",
+      "displayName": "NTPClock",
+      "version": "1.2.0 / library 1.3.0"
+    },
+    {
+      "category": "communication",
+      "folder": "thingspeak",
+      "displayName": "ThingSpeak",
+      "version": "1.2.2 / library 1.2.2"
+    },
+    {
+      "category": "communication",
+      "folder": "httpserver",
+      "displayName": "HTTP Server",
+      "version": "2.1.0 / library 2.1.0"
+    },
+    {
+      "category": "sensor",
+      "folder": "environment",
+      "displayName": "Environment",
+      "version": "1.1.0 / library 1.2.1"
+    }
+  ],
+  "files": [
+    {
+      "path": "extensions/communication/httpserver/asset/sensorserver.svg",
+      "sha256": "ead9045d67f99304b8e66e73acaf96c1902b85b276e75e33b6f94c6f044af49d",
+      "size": 472
+    },
+    {
+      "path": "extensions/communication/httpserver/blocks.js",
+      "sha256": "0d482319501a02b13bf569435b499f35ca6edba1fa5c601fb735c960e3935b56",
+      "size": 3661
+    },
+    {
+      "path": "extensions/communication/httpserver/generator.js",
+      "sha256": "f420884de8c167c99326fb3e2e5b9c8b662aa3a37dc42f9acf85d8787399bb4d",
+      "size": 3165
+    },
+    {
+      "path": "extensions/communication/httpserver/index.js",
+      "sha256": "d0fcf527beea1640f82d308f5df8a11d529952d88b01f24d8d679770b495888d",
+      "size": 773
+    },
+    {
+      "path": "extensions/communication/httpserver/lib/SensorServer/library.properties",
+      "sha256": "f8a10ff6cfe60b1679643297effbad7d7c70f4cd704626d69d40ad6aff50427b",
+      "size": 306
+    },
+    {
+      "path": "extensions/communication/httpserver/lib/SensorServer/src/SensorServer.cpp",
+      "sha256": "2e4b3d4363c022256299c91641735dcc85478ed000d935aa3151cc68abcdf2a9",
+      "size": 8139
+    },
+    {
+      "path": "extensions/communication/httpserver/lib/SensorServer/src/SensorServer.h",
+      "sha256": "a61f218300caaeff30a4f02316b832537279f0cc6a2ac7cbe734549d0fbaa10f",
+      "size": 1405
+    },
+    {
+      "path": "extensions/communication/httpserver/msg.js",
+      "sha256": "59ec56a63588105da191d2a9c7e885d787a974e324e8d3874430802c38d54842",
+      "size": 2778
+    },
+    {
+      "path": "extensions/communication/httpserver/toolbox.js",
+      "sha256": "2330265595d392c7db86f7760eb837df85b51ac3d646eee8b539db72d1e7d5d0",
+      "size": 1383
+    },
+    {
+      "path": "extensions/communication/ntpclock/asset/ntpclock.svg",
+      "sha256": "28d422626ee34234108d026cd97fcb29daaca16b014e0cb138eae4333bab0314",
+      "size": 415
+    },
+    {
+      "path": "extensions/communication/ntpclock/blocks.js",
+      "sha256": "4e72bdd8228d3c42a5288082ae6b076882cfcca2eafc37eb2b8aaa505fc47833",
+      "size": 2214
+    },
+    {
+      "path": "extensions/communication/ntpclock/generator.js",
+      "sha256": "f4a73dd734b3bcd52c1b695b6b0d2819803ed9c95a1c1ef07736fc7d89ecf028",
+      "size": 1691
+    },
+    {
+      "path": "extensions/communication/ntpclock/index.js",
+      "sha256": "aae50fb4fd3ca641422b412cf089a6a53593e80a4af3c606e686f3dd788b8f5d",
+      "size": 748
+    },
+    {
+      "path": "extensions/communication/ntpclock/lib/NTPClock/examples/NTPClockTest/NTPClockTest.ino",
+      "sha256": "39c68f07b8ecf64c2cdf16341d8b3b854524b5d66aeafc6bf6ceed783763347b",
+      "size": 473
+    },
+    {
+      "path": "extensions/communication/ntpclock/lib/NTPClock/library.properties",
+      "sha256": "a91e0e57aa62a572c3dbc24e6eec800cbaea58d4ac9ff20c666a19a24465bd19",
+      "size": 295
+    },
+    {
+      "path": "extensions/communication/ntpclock/lib/NTPClock/src/NTPClock.cpp",
+      "sha256": "d9c9be3b481bee147a071e53c13f25762fa686c85d7cee1f4791c1dd9b890d70",
+      "size": 2813
+    },
+    {
+      "path": "extensions/communication/ntpclock/lib/NTPClock/src/NTPClock.h",
+      "sha256": "7775cba06e45bc011a0dc4c6ba80eb9bab91fe5489bdde23b405262e89bbc7b8",
+      "size": 908
+    },
+    {
+      "path": "extensions/communication/ntpclock/msg.js",
+      "sha256": "11ee6cb04f35ce317e93b3919ab5c2065fdfd02fd77756be7b7f19ac7ca0810b",
+      "size": 2190
+    },
+    {
+      "path": "extensions/communication/ntpclock/toolbox.js",
+      "sha256": "63ac1f737bc9555fd5e4bfc717b15869e0ea419a0e41f2508d16cbf84e2ed81a",
+      "size": 1126
+    },
+    {
+      "path": "extensions/communication/thingspeak/README_Ver1.2.2.txt",
+      "sha256": "d494ff0795c5676879b9081caf3b299d7a510cbcb612d0d5da99ec0e3bbaf640",
+      "size": 878
+    },
+    {
+      "path": "extensions/communication/thingspeak/asset/thingspeak.svg",
+      "sha256": "c181dec33771b79f8154547abc5c715c965b79fde21f9814248bd85bbf304234",
+      "size": 310
+    },
+    {
+      "path": "extensions/communication/thingspeak/blocks.js",
+      "sha256": "b45cce01167dbce1675326c52c6a201057cad604a7907f73883dd9d0e663b28f",
+      "size": 2750
+    },
+    {
+      "path": "extensions/communication/thingspeak/generator.js",
+      "sha256": "4a7de2e4bd3f5c2d32588fafe18a04cf813f147f02f6aecd7cd8f2b5b517fb25",
+      "size": 2149
+    },
+    {
+      "path": "extensions/communication/thingspeak/index.js",
+      "sha256": "37a4cece88ec7d769bae84d104318eff03ecbe4404d646ff4288627262eeddfe",
+      "size": 770
+    },
+    {
+      "path": "extensions/communication/thingspeak/lib/KBThingSpeak/examples/ThingSpeakTest/ThingSpeakTest.ino",
+      "sha256": "b98fa321411be417bdb804f3cbcc634c0e6bd6e3dc511d5841d671fa60ca6d4e",
+      "size": 1362
+    },
+    {
+      "path": "extensions/communication/thingspeak/lib/KBThingSpeak/library.properties",
+      "sha256": "17a05af236de47b49d898e18ffea363b421d551605104c7f9c83202b2602cad4",
+      "size": 327
+    },
+    {
+      "path": "extensions/communication/thingspeak/lib/KBThingSpeak/src/KBThingSpeak.cpp",
+      "sha256": "ead36454cf5a7195b060afac3989b96f0e13da527793889ef8a8130ddca65f29",
+      "size": 7281
+    },
+    {
+      "path": "extensions/communication/thingspeak/lib/KBThingSpeak/src/KBThingSpeak.h",
+      "sha256": "f6dbf64722470c3050d6422a2659e788f68e539667332bae9c99eab23f1aebef",
+      "size": 2010
+    },
+    {
+      "path": "extensions/communication/thingspeak/msg.js",
+      "sha256": "ac5bb6bab2d55bf9707b4cdc16e4e635d2fb9ef779c7fb840eb63c871001336f",
+      "size": 4046
+    },
+    {
+      "path": "extensions/communication/thingspeak/toolbox.js",
+      "sha256": "5bfb83b776e2a79f484808a7a1c8433a263e68142cf570fead266b47bf1efb54",
+      "size": 4841
+    },
+    {
+      "path": "extensions/communication/wifisimple/asset/wifisimple.svg",
+      "sha256": "58b675952a7e08c38a2e2e1a4121c55a70943e8698d7cd7d8aec4edc805b5cba",
+      "size": 482
+    },
+    {
+      "path": "extensions/communication/wifisimple/blocks.js",
+      "sha256": "0b73a2581191ae33645941b7222ffdbf1ba39d8e1f519ef5aab7cebc76f7361a",
+      "size": 1811
+    },
+    {
+      "path": "extensions/communication/wifisimple/generator.js",
+      "sha256": "e4609d543fb5ef9ff45eaa4e9acb1b0fc4c027e4d0c53e523373f3a10e66714e",
+      "size": 1451
+    },
+    {
+      "path": "extensions/communication/wifisimple/index.js",
+      "sha256": "45e4d192065897b9608a5bc4a8b1c2f50eb75f17902b69760f9597297bd74d9e",
+      "size": 755
+    },
+    {
+      "path": "extensions/communication/wifisimple/msg.js",
+      "sha256": "9be66032a414f5e06737d925300492d036a6537ab06c94d75327fcfee0de30d0",
+      "size": 1421
+    },
+    {
+      "path": "extensions/communication/wifisimple/toolbox.js",
+      "sha256": "15a8c0cdf7f3c25dd99cdd5fd45ebbacdaa872192e85d8b7b4d6d4c849a54205",
+      "size": 806
+    },
+    {
+      "path": "extensions/sensor/environment/asset/environment.svg",
+      "sha256": "49283471d34ff937e6ffbf3e2cc249d811884b3b4de3c203f31b07bcac61995e",
+      "size": 568
+    },
+    {
+      "path": "extensions/sensor/environment/blocks.js",
+      "sha256": "f349c274c439c8f81ee6c52380f40340c27fff747c593bd5355682aa8cd0f25d",
+      "size": 1498
+    },
+    {
+      "path": "extensions/sensor/environment/generator.js",
+      "sha256": "229885231e3d3250152590f6cf75a17dcb78ebf1118bc867f6f0eebf9f7d3a45",
+      "size": 1540
+    },
+    {
+      "path": "extensions/sensor/environment/index.js",
+      "sha256": "9871b9bf0aa9b3ce5c7282cdbb4ee5736c60ecf965392afda5a1df92b58bc90f",
+      "size": 849
+    },
+    {
+      "path": "extensions/sensor/environment/lib/Environment/examples/EnvironmentTest/EnvironmentTest.ino",
+      "sha256": "dbb48502ea6de79d22a47b3c9f2982250dd9110dd64211b52e088068f0c53566",
+      "size": 533
+    },
+    {
+      "path": "extensions/sensor/environment/lib/Environment/library.properties",
+      "sha256": "9d68912b72e26f313233f5f1b91ea6ad1c6596e00aa769f900a8f7c02e9826c7",
+      "size": 321
+    },
+    {
+      "path": "extensions/sensor/environment/lib/Environment/src/Environment.cpp",
+      "sha256": "0054e182e4fb7957dd1085a02893c26e427361d584b89a231fc05fabe076941b",
+      "size": 638
+    },
+    {
+      "path": "extensions/sensor/environment/lib/Environment/src/Environment.h",
+      "sha256": "36b00c4c50c31eb2cd5fed0e4ef10814a0a51770f312c36dcd1d4ebcd9c93221",
+      "size": 596
+    },
+    {
+      "path": "extensions/sensor/environment/msg.js",
+      "sha256": "663e3fb4613bd95a6899a1a404c8dee6a7a5a57e7f929272a1387b9110488aa6",
+      "size": 1256
+    },
+    {
+      "path": "extensions/sensor/environment/toolbox.js",
+      "sha256": "13d6656163e35b708abf28571f494583de4b9daaa0666c91d249a6d922fda9ec",
+      "size": 1155
+    }
+  ]
+}
