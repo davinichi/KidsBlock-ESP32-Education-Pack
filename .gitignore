@@ -1,1 +1,21 @@
+# Installation log
 install_result.txt
+
+# Distribution files
+dist/
+*.zip
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.log
+*~
