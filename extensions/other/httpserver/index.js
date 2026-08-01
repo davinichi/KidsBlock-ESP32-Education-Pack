@@ -1,0 +1,28 @@
+const HTTPServer = formatMessage => ({
+  name: formatMessage({
+    id: 'HTTPServer',
+    default: 'HTTP Server',
+    description: 'ESP32 HTTP server blocks'
+  }),
+  extensionId: 'HTTPServer',
+  version: '3.1.2',
+  type: 'arduino',
+  supportDevice: ['arduinoEsp32'],
+  author: 'Davinichi',
+  iconURL: 'asset/sensorserver.svg',
+  description: formatMessage({
+    id: 'HTTPServer.description',
+    default: 'Show up to eight values and receive up to four two-state browser controls',
+    description: 'Description of HTTP Server extension'
+  }),
+  featured: true,
+  blocks: 'blocks.js',
+  generator: 'generator.js',
+  toolbox: 'toolbox.js',
+  msg: 'msg.js',
+  library: 'lib',
+  tags: ['communication'],
+  helpLink: ''
+});
+
+module.exports = HTTPServer;

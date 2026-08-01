@@ -1,4 +1,4 @@
 KidsBlock ESP32 Education Pack
-Version: v0.1 Preview
-Release Date: 2026-07-29
+Version: v0.3 Preview
+Release Date: 2026-07-31
 Status: Preview Release

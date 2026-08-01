@@ -2,7 +2,7 @@
 setlocal
 cd /d "%~dp0"
 echo ================================================
-echo  KidsBlock ESP32 Education Pack Ver.2.1.0
+echo  KidsBlock ESP32 Education Pack v0.3 Preview
 echo ================================================
 echo.
 echo Close KidsBlock before installation.
@@ -15,7 +15,7 @@ if not "%ERR%"=="0" (
   echo See install_result.txt for details.
 ) else (
   echo Installation completed successfully.
-  echo Start KidsBlock and check the extensions.
+  echo Start KidsBlock and check the Other category.
 )
 echo.
 pause

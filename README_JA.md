@@ -1,95 +1,29 @@
-![KidsBlock ESP32 Education Pack](images/banner.png)
+# KidsBlock ESP32 Education Pack v0.3 Preview
 
-# KidsBlock ESP32 Education Pack（日本語）
+教育現場での試用を目的としたプレビュー版です。
 
-🌐 **Language**
+## 収録拡張（すべて「other」カテゴリー）
 
-- 🇯🇵 日本語（このページ）
-- 🇺🇸 English → README.md
-
----
-
-## KidsBlock ESP32 Education Packとは
-
-KidsBlock ESP32 Education Pack は、小学校から高校までのプログラミング教育やものづくり教室で活用できるIoT教材を提供することを目的としたオープンソースプロジェクトです。
-
-Wi-Fi通信、NTP時計、センサー、クラウド連携、Webブラウザ表示など、IoT学習に必要な機能をKidsBlock上で簡単に利用できる拡張ライブラリと教材を提供します。
-
----
-
-# 🚀 クイックスタート
-
-初めてご利用になる方は、次の順番でお試しください。
-
-1. INSTALL_JA.md を読む
-2. 最新版（Release）をダウンロードする
-3. `install.bat` を実行する
-4. KidsBlockを起動する
-5. サンプルプログラムをESP32へ書き込む
-
----
-
-# ✨ 主な機能
-
-- SimpleWiFi
-- NTPClock
-- Environment（WBGT対応）
+- KBSD ESP32
+- KBCSV ESP32
+- Environment
 - HTTP Server
+- BLE UART3
+- NTPClock
 - ThingSpeak
+- SimpleWiFi
 
----
+## インストール
 
-# 🎓 学習できること
+1. KidsBlockを終了します。
+2. ZIPを展開します。
+3. `install.bat`を実行します。
+4. 完了後、KidsBlockを起動して「Other」カテゴリーを確認します。
 
-- Wi-Fi接続
-- インターネット時計
-- 温湿度計
-- WBGT警報器
-- Webブラウザ表示
-- ThingSpeakクラウド連携
-- IoTデータ活用
+既存の同名拡張はバックアップ後に更新されます。インストール結果は`install_result.txt`に記録されます。
 
----
+## 今回の調整
 
-# 📚 ドキュメント
-
-- INSTALL_JA.md …… インストールガイド
-- CHANGELOG.md …… 更新履歴
-- RELEASE_NOTES.md …… リリース情報
-- CONTRIBUTING.md …… プロジェクトへの参加方法
-- LICENSE …… MITライセンス
-
----
-
-# 🚧 開発状況
-
-現在は **v0.1 Preview** を公開しています。
-
-教育現場での実践を通して改善を続けています。
-
----
-
-# 💬 ご意見・ご提案
-
-不具合や改善案は GitHub Issues よりお気軽にお知らせください。
-
----
-
-# ライセンス
-
-本プロジェクトは **MIT License** のもとで公開しています。
-詳細は `LICENSE` をご覧ください。
-
----
-
-**Project**
-KidsBlock ESP32 Education Pack
-
-**Brand**
-davinichi
-
-**Lead Developer**
-Toshikazu Shimada
-
-**Organization**
-System COBO Co., Ltd.
+- 8拡張をすべて`other`フォルダへ配置
+- KBCSVの「CSVの見出し行数」の初期値を1に変更
+- KBSDのSDカード検査ブロックは表示を維持
