@@ -1,96 +1,30 @@
 # Contributing to KidsBlock ESP32 Education Pack
 
-Thank you for your interest in the **KidsBlock ESP32 Education Pack**.
+Thank you for your interest in the project.
 
-## Our Mission
+## Mission
 
-Our mission is to make IoT programming **simple, enjoyable, and accessible** for learners of all ages.
+The project aims to make ESP32 and IoT programming understandable, practical, and accessible in education.
 
-We believe that every child should have the opportunity to learn programming through hands-on creation, experimentation, and discovery.
+## Contribution principles
 
-Education comes first.
+- Keep blocks and documentation simple.
+- Prioritize classroom reliability.
+- Avoid unnecessary complexity.
+- Preserve compatibility with existing projects where possible.
+- Document changes clearly.
+- Test on supported ESP32 boards and KidsBlock environments.
 
----
+## Welcome contributions
 
-## Our Philosophy
+- Bug reports
+- Documentation improvements
+- Sample programs
+- Classroom feedback
+- Translation
+- Compatibility testing
+- Pull requests
 
-When contributing to this project, we encourage you to keep the following principles in mind.
+## Version 0.5 Preview policy
 
-### Make it Simple
-
-Please write code and documentation that are easy to understand.
-
-Readable code is more valuable than complicated code.
-
-### Think Like a Teacher
-
-Consider how teachers and students will use your work in a classroom.
-
-Features should support learning, not increase complexity.
-
-### Learn by Making
-
-Hands-on experience is at the heart of this project.
-
-Ideas that inspire creativity, curiosity, and experimentation are always welcome.
-
-### Share Knowledge
-
-Good documentation is as valuable as good code.
-
-Tutorials, diagrams, lesson ideas, translations, and examples are important contributions.
-
----
-
-## Ways to Contribute
-
-You are welcome to contribute by:
-
-- Reporting bugs
-- Suggesting new educational features
-- Improving documentation
-- Writing sample programs
-- Translating documents
-- Sharing classroom experiences
-- Proposing educational activities
-
-Every contribution, large or small, is appreciated.
-
----
-
-## Respectful Collaboration
-
-Please communicate respectfully and constructively.
-
-We welcome people with different backgrounds, experiences, and skill levels.
-
-Our common goal is to improve programming education together.
-
----
-
-## Looking Ahead
-
-As this project grows, additional contribution guidelines may be added for:
-
-- Pull Requests
-- Coding conventions
-- Testing procedures
-- Documentation standards
-
-For now, our shared educational mission is our most important guideline.
-
----
-
-Thank you for supporting the KidsBlock ESP32 Education Pack.
-
-**Project**  
-KidsBlock ESP32 Education Pack
-
-**Brand**  
-davinichi
-
-**Lead Developer**  
-Toshikazu Shimada
-
-**Organization**  
-System COBO Co., Ltd.
+Until Version 1.0, the project prioritizes bug fixes, documentation, installation reliability, and field testing over new features.
