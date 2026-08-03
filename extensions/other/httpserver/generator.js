@@ -3,8 +3,8 @@
 /* eslint-disable require-jsdoc */
 function addGenerator (Blockly) {
   const prepare = function () {
-    Blockly.Arduino.includes_.include_httpserver = '#include <SensorServer31.h>';
-    Blockly.Arduino.definitions_.define_httpserver = 'SensorServer31 kbHttpServer;';
+    Blockly.Arduino.includes_.include_httpserver = '#include <SensorServer32.h>';
+    Blockly.Arduino.definitions_.define_httpserver = 'SensorServer32 kbHttpServer;';
   };
 
   Blockly.Arduino.httpserver_begin = function (block) {
@@ -66,6 +66,33 @@ function addGenerator (Blockly) {
     const control = block.getFieldValue('CONTROL') || '1';
     return `kbHttpServer.clearGpioControl(${control});\n`;
   };
+
+  Blockly.Arduino.httpserver_exclusive_group_label = function (block) {
+    prepare();
+    const label = Blockly.Arduino.valueToCode(block, 'LABEL', Blockly.Arduino.ORDER_NONE) || '"モード選択"';
+    return `kbHttpServer.setExclusiveGroupLabel(${label});\n`;
+  };
+  Blockly.Arduino.httpserver_register_exclusive = function (block) {
+    prepare();
+    const option = block.getFieldValue('OPTION') || '1';
+    const label = Blockly.Arduino.valueToCode(block, 'LABEL', Blockly.Arduino.ORDER_NONE) || `"選択${option}"`;
+    return `kbHttpServer.registerExclusiveOption(${option}, ${label});\n`;
+  };
+  Blockly.Arduino.httpserver_select_exclusive = function (block) {
+    prepare();
+    const option = block.getFieldValue('OPTION') || '1';
+    return `kbHttpServer.selectExclusiveOption(${option});\n`;
+  };
+  Blockly.Arduino.httpserver_exclusive_selected = function (block) {
+    prepare();
+    const option = block.getFieldValue('OPTION') || '1';
+    return [`kbHttpServer.exclusiveOptionSelected(${option})`, Blockly.Arduino.ORDER_ATOMIC];
+  };
+  Blockly.Arduino.httpserver_exclusive_number = function () {
+    prepare();
+    return ['kbHttpServer.selectedExclusiveOption()', Blockly.Arduino.ORDER_ATOMIC];
+  };
+
   Blockly.Arduino.httpserver_handle = function () {
     prepare();
     return 'kbHttpServer.handleClient();\n';

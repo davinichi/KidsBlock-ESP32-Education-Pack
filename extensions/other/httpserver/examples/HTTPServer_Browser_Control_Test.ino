@@ -1,22 +1,20 @@
 #include <WiFi.h>
-#include <SensorServer31.h>
+#include <SensorServer32.h>
 
-SensorServer31 kbHttpServer;
-const int LED_PIN = 23;
+SensorServer32 server;
 
 void setup() {
   Serial.begin(115200);
-  pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, LOW);
-
-  // WiFi.begin("SSID", "PASSWORD");
-  // Wi-Fi接続完了後に実行してください。
-
-  kbHttpServer.registerBrowserControl(1, "LED", "点灯", "消灯", LOW);
-  kbHttpServer.begin("IoTコントローラー");
+  // Wi-Fi接続後に使用してください。
+  server.registerBrowserControl(1, "LED", "点灯", "消灯", false);
+  server.setExclusiveGroupLabel("サーボ角度");
+  server.registerExclusiveOption(1, "0度");
+  server.registerExclusiveOption(2, "90度");
+  server.registerExclusiveOption(3, "180度");
+  server.selectExclusiveOption(1);
+  server.begin("IoTコントローラー");
 }
 
 void loop() {
-  kbHttpServer.handleClient();
-  digitalWrite(LED_PIN, kbHttpServer.browserControlState(1) ? HIGH : LOW);
+  server.handleClient();
 }

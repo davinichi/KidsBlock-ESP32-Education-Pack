@@ -5,14 +5,14 @@ const HTTPServer = formatMessage => ({
     description: 'ESP32 HTTP server blocks'
   }),
   extensionId: 'HTTPServer',
-  version: '3.1.2',
+  version: '3.3.1',
   type: 'arduino',
   supportDevice: ['arduinoEsp32'],
   author: 'Davinichi',
   iconURL: 'asset/sensorserver.svg',
   description: formatMessage({
     id: 'HTTPServer.description',
-    default: 'Show up to eight values and receive up to four two-state browser controls',
+    default: 'Show up to eight values and receive up to eight ON/OFF buttons and eight radio buttons',
     description: 'Description of HTTP Server extension'
   }),
   featured: true,

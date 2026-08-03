@@ -1,17 +1,20 @@
-#ifndef SENSOR_SERVER31_H
-#define SENSOR_SERVER31_H
+#ifndef SENSOR_SERVER32_H
+#define SENSOR_SERVER32_H
+
+#define SENSOR_SERVER32_VERSION "3.3.1"
 
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WebServer.h>
 
-class SensorServer31 {
+class SensorServer32 {
 public:
   static const uint8_t MAX_ITEMS = 8;
-  static const uint8_t MAX_GPIO_CONTROLS = 4;
+  static const uint8_t MAX_BROWSER_CONTROLS = 8;
+  static const uint8_t MAX_EXCLUSIVE_OPTIONS = 8;
 
-  SensorServer31();
-  ~SensorServer31();
+  SensorServer32();
+  ~SensorServer32();
   void begin(const String& title = "ESP32 HTTP Server", uint16_t port = 80);
   void setDeviceName(const String& name);
   void setUpdateInterval(unsigned long milliseconds);
@@ -21,32 +24,23 @@ public:
   bool clearItem(uint8_t itemNumber);
   void clearAllItems();
 
-  bool registerBrowserControl(uint8_t controlNumber, const String& label, const String& highButtonLabel, const String& lowButtonLabel, bool initialState = false) {
-    if (controlNumber < 1 || controlNumber > MAX_GPIO_CONTROLS) return false;
-    const int index = static_cast<int>(controlNumber - 1);
-    gpioControls_[index].label = label;
-    gpioControls_[index].highButtonLabel = highButtonLabel;
-    gpioControls_[index].lowButtonLabel = lowButtonLabel;
-    gpioControls_[index].pin = -1;
-    gpioControls_[index].state = initialState;
-    gpioControls_[index].registered = true;
-    return true;
-  }
-  bool setBrowserControlState(uint8_t controlNumber, bool state) {
-    if (controlNumber < 1 || controlNumber > MAX_GPIO_CONTROLS) return false;
-    const int index = static_cast<int>(controlNumber - 1);
-    if (!gpioControls_[index].registered) return false;
-    gpioControls_[index].state = state;
-    return true;
-  }
-  bool browserControlState(uint8_t controlNumber) const {
-    if (controlNumber < 1 || controlNumber > MAX_GPIO_CONTROLS) return false;
-    const int index = static_cast<int>(controlNumber - 1);
-    if (!gpioControls_[index].registered) return false;
-    return gpioControls_[index].state;
-  }
+  bool registerBrowserControl(uint8_t controlNumber, const String& label,
+                              const String& highButtonLabel,
+                              const String& lowButtonLabel,
+                              bool initialState = false);
+  bool setBrowserControlState(uint8_t controlNumber, bool state);
+  bool browserControlState(uint8_t controlNumber) const;
+  bool clearBrowserControl(uint8_t controlNumber);
+  void clearAllBrowserControls();
 
-  // Compatibility with early Ver.3.0 generated code.
+  void setExclusiveGroupLabel(const String& label);
+  bool registerExclusiveOption(uint8_t optionNumber, const String& label);
+  bool selectExclusiveOption(uint8_t optionNumber);
+  bool exclusiveOptionSelected(uint8_t optionNumber) const;
+  uint8_t selectedExclusiveOption() const;
+  void clearAllExclusiveOptions();
+
+  // Compatibility with Ver.3.0 generated code.
   bool registerGpioControl(uint8_t controlNumber, int pin, const String& label, bool initialState = false);
   bool setGpioState(uint8_t controlNumber, bool state);
   bool gpioState(uint8_t controlNumber) const;
@@ -70,7 +64,7 @@ private:
     bool registered;
   };
 
-  struct GpioControl {
+  struct BrowserControl {
     String label;
     String highButtonLabel;
     String lowButtonLabel;
@@ -79,20 +73,30 @@ private:
     bool registered;
   };
 
+  struct ExclusiveOption {
+    String label;
+    bool registered;
+  };
+
   WebServer* server_;
   String title_;
   String deviceName_;
   DisplayItem items_[MAX_ITEMS];
-  GpioControl gpioControls_[MAX_GPIO_CONTROLS];
+  BrowserControl browserControls_[MAX_BROWSER_CONTROLS];
+  ExclusiveOption exclusiveOptions_[MAX_EXCLUSIVE_OPTIONS];
+  String exclusiveGroupLabel_;
+  uint8_t selectedExclusiveOption_;
   bool running_;
   unsigned long updateIntervalMs_;
 
   int itemIndex(uint8_t itemNumber) const;
-  int gpioIndex(uint8_t controlNumber) const;
+  int browserControlIndex(uint8_t controlNumber) const;
+  int exclusiveOptionIndex(uint8_t optionNumber) const;
   void registerRoutes();
   void handleRoot();
   void handleJson();
-  void handleGpio();
+  void handleBrowserControl();
+  void handleExclusiveOption();
   String makeHtml() const;
   String makeJson() const;
   static String htmlEscape(const String& text);

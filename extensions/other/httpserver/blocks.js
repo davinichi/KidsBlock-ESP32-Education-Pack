@@ -4,7 +4,7 @@
 function addBlocks (Blockly) {
   const color = '#1769AA';
   const itemOptions = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8']];
-  const controlOptions = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+  const controlOptions = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8']];
   const stateOptions = [['HIGH', 'HIGH'], ['LOW', 'LOW']];
 
   Blockly.Blocks.httpserver_begin = {
@@ -85,6 +85,37 @@ function addBlocks (Blockly) {
   Blockly.Blocks.httpserver_clear_gpio = {
     init: function () {
       this.jsonInit({message0: Blockly.Msg.HTTPSERVER_CLEAR_GPIO, args0: [{type: 'field_dropdown', name: 'CONTROL', options: controlOptions}], colour: color, extensions: ['shape_statement']});
+    }
+  };
+
+
+  Blockly.Blocks.httpserver_exclusive_group_label = {
+    init: function () {
+      this.jsonInit({message0: Blockly.Msg.HTTPSERVER_EXCLUSIVE_GROUP_LABEL, args0: [{type: 'input_value', name: 'LABEL'}], colour: color, extensions: ['shape_statement']});
+    }
+  };
+
+  Blockly.Blocks.httpserver_register_exclusive = {
+    init: function () {
+      this.jsonInit({message0: Blockly.Msg.HTTPSERVER_REGISTER_EXCLUSIVE, args0: [{type: 'field_dropdown', name: 'OPTION', options: controlOptions}, {type: 'input_value', name: 'LABEL'}], colour: color, extensions: ['shape_statement']});
+    }
+  };
+
+  Blockly.Blocks.httpserver_select_exclusive = {
+    init: function () {
+      this.jsonInit({message0: Blockly.Msg.HTTPSERVER_SELECT_EXCLUSIVE, args0: [{type: 'field_dropdown', name: 'OPTION', options: controlOptions}], colour: color, extensions: ['shape_statement']});
+    }
+  };
+
+  Blockly.Blocks.httpserver_exclusive_selected = {
+    init: function () {
+      this.jsonInit({message0: Blockly.Msg.HTTPSERVER_EXCLUSIVE_SELECTED, args0: [{type: 'field_dropdown', name: 'OPTION', options: controlOptions}], colour: color, extensions: ['output_boolean']});
+    }
+  };
+
+  Blockly.Blocks.httpserver_exclusive_number = {
+    init: function () {
+      this.jsonInit({message0: Blockly.Msg.HTTPSERVER_EXCLUSIVE_NUMBER, colour: color, extensions: ['output_number']});
     }
   };
 

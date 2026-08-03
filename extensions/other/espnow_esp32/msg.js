@@ -1,0 +1,40 @@
+/* eslint-disable func-style */
+/* eslint-disable require-jsdoc */
+function addMsg (Blockly) {
+  Object.assign(Blockly.ScratchMsgs.locales.en, {
+    ESPNOW_CATEGORY: 'ESP-NOW',
+    ESPNOW_BEGIN: 'start ESP-NOW',
+    ESPNOW_SEND_TEXT: 'send ESP-NOW text %1 to destination MAC %2 (blank = all)',
+    ESPNOW_HAS_NEW_DATA: 'ESP-NOW received new data',
+    ESPNOW_RECEIVED_TEXT: 'ESP-NOW received text',
+    ESPNOW_SENDER_MAC: 'ESP-NOW sender MAC address',
+    ESPNOW_LAST_SEND_SUCCESS: 'last ESP-NOW send succeeded',
+    ESPNOW_IS_READY: 'ESP-NOW is ready'
+  });
+
+  Object.assign(Blockly.ScratchMsgs.locales.ja, {
+    ESPNOW_CATEGORY: 'ESP-NOW',
+    ESPNOW_BEGIN: 'ESP-NOWを始める',
+    ESPNOW_SEND_TEXT: 'ESP-NOWで文字列 %1 を送信先MACアドレス %2 へ送る（空欄なら全員）',
+    ESPNOW_HAS_NEW_DATA: 'ESP-NOWで新しいデータを受信した',
+    ESPNOW_RECEIVED_TEXT: 'ESP-NOWで受信した文字列',
+    ESPNOW_SENDER_MAC: 'ESP-NOWの送信元MACアドレス',
+    ESPNOW_LAST_SEND_SUCCESS: 'ESP-NOWの最後の送信は成功した',
+    ESPNOW_IS_READY: 'ESP-NOWを使用できる'
+  });
+
+  Object.assign(Blockly.ScratchMsgs.locales['zh-cn'], {
+    ESPNOW_CATEGORY: 'ESP-NOW',
+    ESPNOW_BEGIN: '启动ESP-NOW',
+    ESPNOW_SEND_TEXT: '使用ESP-NOW发送文本 %1 到目标MAC地址 %2（空白=全部）',
+    ESPNOW_HAS_NEW_DATA: 'ESP-NOW收到新数据',
+    ESPNOW_RECEIVED_TEXT: 'ESP-NOW收到的文本',
+    ESPNOW_SENDER_MAC: 'ESP-NOW发送方MAC地址',
+    ESPNOW_LAST_SEND_SUCCESS: '上次ESP-NOW发送成功',
+    ESPNOW_IS_READY: 'ESP-NOW可用'
+  });
+
+  return Blockly;
+}
+
+exports = addMsg;

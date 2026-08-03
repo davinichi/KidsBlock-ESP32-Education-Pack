@@ -15,6 +15,12 @@ function addToolbox () {
       <block type="httpserver_register_gpio"><value name="LABEL"><shadow type="text"><field name="TEXT">LED</field></shadow></value><value name="HIGH_LABEL"><shadow type="text"><field name="TEXT">点灯</field></shadow></value><value name="LOW_LABEL"><shadow type="text"><field name="TEXT">消灯</field></shadow></value></block>
       <block type="httpserver_gpio_state"/>
       <sep gap="24"/>
+      <block type="httpserver_exclusive_group_label"><value name="LABEL"><shadow type="text"><field name="TEXT">サーボ角度</field></shadow></value></block>
+      <block type="httpserver_register_exclusive"><value name="LABEL"><shadow type="text"><field name="TEXT">0度</field></shadow></value></block>
+      <block type="httpserver_select_exclusive"/>
+      <block type="httpserver_exclusive_selected"/>
+      <block type="httpserver_exclusive_number"/>
+      <sep gap="24"/>
       <block type="httpserver_handle"/>
       <block type="httpserver_url"/>
       <block type="httpserver_is_running"/>
