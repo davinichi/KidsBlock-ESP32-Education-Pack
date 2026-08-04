@@ -1,414 +1,520 @@
-﻿{
-  "packName": "KidsBlock ESP32 Education Pack",
-  "packVersion": "0.3-Preview",
-  "releaseDate": "2026-07-31",
-  "extensions": [
-    {
-      "category": "other",
-      "folder": "kbsd_esp32",
-      "displayName": "KBSD ESP32"
-    },
-    {
-      "category": "other",
-      "folder": "kbcsv_esp32",
-      "displayName": "KBCSV ESP32"
-    },
-    {
-      "category": "other",
-      "folder": "environment",
-      "displayName": "Environment"
-    },
-    {
-      "category": "other",
-      "folder": "httpserver",
-      "displayName": "HTTP Server"
-    },
-    {
-      "category": "other",
-      "folder": "bleuart3",
-      "displayName": "BLE UART3"
-    },
-    {
-      "category": "other",
-      "folder": "ntpclock",
-      "displayName": "NTPClock"
-    },
-    {
-      "category": "other",
-      "folder": "thingspeak",
-      "displayName": "ThingSpeak"
-    },
-    {
-      "category": "other",
-      "folder": "wifisimple",
-      "displayName": "SimpleWiFi"
-    }
-  ],
-  "files": [
-    {
-      "path": "extensions/other/bleuart3/asset/bleuart.svg",
-      "sha256": "cca2f08416874ff11f14da47bd6948c18c8def0db268b934e88810fd61149141",
-      "size": 400
-    },
-    {
-      "path": "extensions/other/bleuart3/blocks.js",
-      "sha256": "d2d7dbf7089d5960358e92839187228ea8433c6e3b4ab803b90bf3d3d353911b",
-      "size": 2007
-    },
-    {
-      "path": "extensions/other/bleuart3/generator.js",
-      "sha256": "09e10ea85a9abf0c5b795766b4bbd66eb82683435bfc115ae0866162daf3e325",
-      "size": 3004
-    },
-    {
-      "path": "extensions/other/bleuart3/index.js",
-      "sha256": "584cb3481a6c8f9f081e7c109ed5727497d8ba70e350fe5715c85020a2935542",
-      "size": 701
-    },
-    {
-      "path": "extensions/other/bleuart3/lib/KBBLEUART3/library.properties",
-      "sha256": "0a084845a8cfe7c1795f9ac36c35d94966bee2d6d45fcdbbe7aa9458596f9d9e",
-      "size": 324
-    },
-    {
-      "path": "extensions/other/bleuart3/lib/KBBLEUART3/src/KBBLEUART3.cpp",
-      "sha256": "ffd98b50c5f6c8be7dc353a91059c1d97463abcd184d519e0b191978d8863df7",
-      "size": 10311
-    },
-    {
-      "path": "extensions/other/bleuart3/lib/KBBLEUART3/src/KBBLEUART3.h",
-      "sha256": "0ea337815d911958507a5dee1f1d3b5775b55c4bca1fabd75891937b42760149",
-      "size": 3035
-    },
-    {
-      "path": "extensions/other/bleuart3/msg.js",
-      "sha256": "8bea4b08d315b87fa6c710301fb90f3fcf0336c11738cae740113dd1c641b65f",
-      "size": 2565
-    },
-    {
-      "path": "extensions/other/bleuart3/toolbox.js",
-      "sha256": "d189cdba1dec9f220d0e31ac163e412b50c705f0c0795e5f133b06d386421ec8",
-      "size": 5684
-    },
-    {
-      "path": "extensions/other/environment/asset/environment.svg",
-      "sha256": "49283471d34ff937e6ffbf3e2cc249d811884b3b4de3c203f31b07bcac61995e",
-      "size": 568
-    },
-    {
-      "path": "extensions/other/environment/blocks.js",
-      "sha256": "f349c274c439c8f81ee6c52380f40340c27fff747c593bd5355682aa8cd0f25d",
-      "size": 1498
-    },
-    {
-      "path": "extensions/other/environment/generator.js",
-      "sha256": "229885231e3d3250152590f6cf75a17dcb78ebf1118bc867f6f0eebf9f7d3a45",
-      "size": 1540
-    },
-    {
-      "path": "extensions/other/environment/index.js",
-      "sha256": "9871b9bf0aa9b3ce5c7282cdbb4ee5736c60ecf965392afda5a1df92b58bc90f",
-      "size": 849
-    },
-    {
-      "path": "extensions/other/environment/lib/Environment/examples/EnvironmentTest/EnvironmentTest.ino",
-      "sha256": "dbb48502ea6de79d22a47b3c9f2982250dd9110dd64211b52e088068f0c53566",
-      "size": 533
-    },
-    {
-      "path": "extensions/other/environment/lib/Environment/library.properties",
-      "sha256": "9d68912b72e26f313233f5f1b91ea6ad1c6596e00aa769f900a8f7c02e9826c7",
-      "size": 321
-    },
-    {
-      "path": "extensions/other/environment/lib/Environment/src/Environment.cpp",
-      "sha256": "0054e182e4fb7957dd1085a02893c26e427361d584b89a231fc05fabe076941b",
-      "size": 638
-    },
-    {
-      "path": "extensions/other/environment/lib/Environment/src/Environment.h",
-      "sha256": "36b00c4c50c31eb2cd5fed0e4ef10814a0a51770f312c36dcd1d4ebcd9c93221",
-      "size": 596
-    },
-    {
-      "path": "extensions/other/environment/msg.js",
-      "sha256": "663e3fb4613bd95a6899a1a404c8dee6a7a5a57e7f929272a1387b9110488aa6",
-      "size": 1256
-    },
-    {
-      "path": "extensions/other/environment/toolbox.js",
-      "sha256": "66c28aa9185725575469d7f31ec530fae53c1bff4698e22b3cb6fd0c3f32e7b8",
-      "size": 832
-    },
-    {
-      "path": "extensions/other/httpserver/asset/sensorserver.svg",
-      "sha256": "ead9045d67f99304b8e66e73acaf96c1902b85b276e75e33b6f94c6f044af49d",
-      "size": 472
-    },
-    {
-      "path": "extensions/other/httpserver/blocks.js",
-      "sha256": "0d482319501a02b13bf569435b499f35ca6edba1fa5c601fb735c960e3935b56",
-      "size": 3661
-    },
-    {
-      "path": "extensions/other/httpserver/generator.js",
-      "sha256": "f420884de8c167c99326fb3e2e5b9c8b662aa3a37dc42f9acf85d8787399bb4d",
-      "size": 3165
-    },
-    {
-      "path": "extensions/other/httpserver/index.js",
-      "sha256": "d0fcf527beea1640f82d308f5df8a11d529952d88b01f24d8d679770b495888d",
-      "size": 773
-    },
-    {
-      "path": "extensions/other/httpserver/lib/SensorServer/library.properties",
-      "sha256": "f8a10ff6cfe60b1679643297effbad7d7c70f4cd704626d69d40ad6aff50427b",
-      "size": 306
-    },
-    {
-      "path": "extensions/other/httpserver/lib/SensorServer/src/SensorServer.cpp",
-      "sha256": "2e4b3d4363c022256299c91641735dcc85478ed000d935aa3151cc68abcdf2a9",
-      "size": 8139
-    },
-    {
-      "path": "extensions/other/httpserver/lib/SensorServer/src/SensorServer.h",
-      "sha256": "a61f218300caaeff30a4f02316b832537279f0cc6a2ac7cbe734549d0fbaa10f",
-      "size": 1405
-    },
-    {
-      "path": "extensions/other/httpserver/msg.js",
-      "sha256": "59ec56a63588105da191d2a9c7e885d787a974e324e8d3874430802c38d54842",
-      "size": 2778
-    },
-    {
-      "path": "extensions/other/httpserver/toolbox.js",
-      "sha256": "2330265595d392c7db86f7760eb837df85b51ac3d646eee8b539db72d1e7d5d0",
-      "size": 1383
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/README.txt",
-      "sha256": "40549d5a5a9386d639ec4f326cef54c70d61c956c25c9807f796e98ef7201c32",
-      "size": 2150
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/asset/kbcsv_esp32.jpg",
-      "sha256": "9521fa45517cc7c4ea3273d203c063a2d9cb2578729f6cbfc39f68b96011d219",
-      "size": 20711
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/blocks.js",
-      "sha256": "0f65b9aff20109d85a15e98232f040bd93cb7ad4d43c1b83b722880a9577a63d",
-      "size": 2691
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/generator.js",
-      "sha256": "90e1dc450c04b64153bea9d941f72ffa253042667744f3ed612390c24a2099a4",
-      "size": 3029
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/index.js",
-      "sha256": "de06706990b0b5ce92adb3bf844e91546ba0b24e6b5a946e63c1487501eccf72",
-      "size": 894
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/lib/KBCSV_ESP32/KBCSV_ESP32.h",
-      "sha256": "ae273eaf95b699814ebca8ddcae3d5b56cd14a28207c80fff209682003ab1bc8",
-      "size": 74
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/lib/KBCSV_ESP32/library.properties",
-      "sha256": "c618474a1d57802e440fbb1c2eeb55b608d374aa2b5ce2e1948d3d4dd9d00e93",
-      "size": 273
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/msg.js",
-      "sha256": "9682182acc81c04084461721b1c451d20ba8c9c1c519e30cb5a43849bea1f481",
-      "size": 1086
-    },
-    {
-      "path": "extensions/other/kbcsv_esp32/toolbox.js",
-      "sha256": "652beeaf31d7dc8d8dd6492fb63a767dbf19836a360b2fbe531e0b7f0948d19c",
-      "size": 862
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/README.txt",
-      "sha256": "ddc8dd325eb8b362a9f1b9b4c0403df4e30aedafd40f10ccc649b08e9ffa784a",
-      "size": 2270
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/asset/kbsd_esp32.jpg",
-      "sha256": "653061ada350f8c53c866daa7be82012c00005b54be1f2f4b79f5944eef7a7fa",
-      "size": 44238
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/blocks.js",
-      "sha256": "a544e04177965d4cabac35fa98838878f998efbdf32a0743061e367de4076185",
-      "size": 5378
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/generator.js",
-      "sha256": "cb4d0c7ef1dfa22383e4a766e9fd0c8be5a660d8724a42e09c9a4f69fc4f2b9a",
-      "size": 8691
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/index.js",
-      "sha256": "e06f20b9a93ba6cca9802f83fe09d78e78743250f7084138214d52f51a9b3e40",
-      "size": 847
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/lib/KBSD_ESP32/KBSD_ESP32.h",
-      "sha256": "b3adf106d95b8934f690943f2921308b90be5b766c4c8ba250c792de56400201",
-      "size": 13
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/lib/KBSD_ESP32/library.properties",
-      "sha256": "6cb1297a8225596ac2ddb8a437c9b7651106003267621e2cfc69747b9f91b58b",
-      "size": 274
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/msg.js",
-      "sha256": "0f0df99d94aed9e3dd9a524ba8b1330a5bd3cf5781fd23ea01ecdaa0bb5f6b24",
-      "size": 1858
-    },
-    {
-      "path": "extensions/other/kbsd_esp32/toolbox.js",
-      "sha256": "aacb13b97a3524f2e74639a9bf19499e319373f5d1d6736810c6d0c1e0859d92",
-      "size": 1512
-    },
-    {
-      "path": "extensions/other/ntpclock/asset/ntpclock.svg",
-      "sha256": "28d422626ee34234108d026cd97fcb29daaca16b014e0cb138eae4333bab0314",
-      "size": 415
-    },
-    {
-      "path": "extensions/other/ntpclock/blocks.js",
-      "sha256": "4e72bdd8228d3c42a5288082ae6b076882cfcca2eafc37eb2b8aaa505fc47833",
-      "size": 2214
-    },
-    {
-      "path": "extensions/other/ntpclock/generator.js",
-      "sha256": "f4a73dd734b3bcd52c1b695b6b0d2819803ed9c95a1c1ef07736fc7d89ecf028",
-      "size": 1691
-    },
-    {
-      "path": "extensions/other/ntpclock/index.js",
-      "sha256": "aae50fb4fd3ca641422b412cf089a6a53593e80a4af3c606e686f3dd788b8f5d",
-      "size": 748
-    },
-    {
-      "path": "extensions/other/ntpclock/lib/NTPClock/examples/NTPClockTest/NTPClockTest.ino",
-      "sha256": "39c68f07b8ecf64c2cdf16341d8b3b854524b5d66aeafc6bf6ceed783763347b",
-      "size": 473
-    },
-    {
-      "path": "extensions/other/ntpclock/lib/NTPClock/library.properties",
-      "sha256": "a91e0e57aa62a572c3dbc24e6eec800cbaea58d4ac9ff20c666a19a24465bd19",
-      "size": 295
-    },
-    {
-      "path": "extensions/other/ntpclock/lib/NTPClock/src/NTPClock.cpp",
-      "sha256": "d9c9be3b481bee147a071e53c13f25762fa686c85d7cee1f4791c1dd9b890d70",
-      "size": 2813
-    },
-    {
-      "path": "extensions/other/ntpclock/lib/NTPClock/src/NTPClock.h",
-      "sha256": "7775cba06e45bc011a0dc4c6ba80eb9bab91fe5489bdde23b405262e89bbc7b8",
-      "size": 908
-    },
-    {
-      "path": "extensions/other/ntpclock/msg.js",
-      "sha256": "11ee6cb04f35ce317e93b3919ab5c2065fdfd02fd77756be7b7f19ac7ca0810b",
-      "size": 2190
-    },
-    {
-      "path": "extensions/other/ntpclock/toolbox.js",
-      "sha256": "63ac1f737bc9555fd5e4bfc717b15869e0ea419a0e41f2508d16cbf84e2ed81a",
-      "size": 1126
-    },
-    {
-      "path": "extensions/other/thingspeak/README_Ver1.2.2.txt",
-      "sha256": "d494ff0795c5676879b9081caf3b299d7a510cbcb612d0d5da99ec0e3bbaf640",
-      "size": 878
-    },
-    {
-      "path": "extensions/other/thingspeak/asset/thingspeak.svg",
-      "sha256": "c181dec33771b79f8154547abc5c715c965b79fde21f9814248bd85bbf304234",
-      "size": 310
-    },
-    {
-      "path": "extensions/other/thingspeak/blocks.js",
-      "sha256": "b45cce01167dbce1675326c52c6a201057cad604a7907f73883dd9d0e663b28f",
-      "size": 2750
-    },
-    {
-      "path": "extensions/other/thingspeak/generator.js",
-      "sha256": "4a7de2e4bd3f5c2d32588fafe18a04cf813f147f02f6aecd7cd8f2b5b517fb25",
-      "size": 2149
-    },
-    {
-      "path": "extensions/other/thingspeak/index.js",
-      "sha256": "37a4cece88ec7d769bae84d104318eff03ecbe4404d646ff4288627262eeddfe",
-      "size": 770
-    },
-    {
-      "path": "extensions/other/thingspeak/lib/KBThingSpeak/examples/ThingSpeakTest/ThingSpeakTest.ino",
-      "sha256": "b98fa321411be417bdb804f3cbcc634c0e6bd6e3dc511d5841d671fa60ca6d4e",
-      "size": 1362
-    },
-    {
-      "path": "extensions/other/thingspeak/lib/KBThingSpeak/library.properties",
-      "sha256": "17a05af236de47b49d898e18ffea363b421d551605104c7f9c83202b2602cad4",
-      "size": 327
-    },
-    {
-      "path": "extensions/other/thingspeak/lib/KBThingSpeak/src/KBThingSpeak.cpp",
-      "sha256": "ead36454cf5a7195b060afac3989b96f0e13da527793889ef8a8130ddca65f29",
-      "size": 7281
-    },
-    {
-      "path": "extensions/other/thingspeak/lib/KBThingSpeak/src/KBThingSpeak.h",
-      "sha256": "f6dbf64722470c3050d6422a2659e788f68e539667332bae9c99eab23f1aebef",
-      "size": 2010
-    },
-    {
-      "path": "extensions/other/thingspeak/msg.js",
-      "sha256": "ac5bb6bab2d55bf9707b4cdc16e4e635d2fb9ef779c7fb840eb63c871001336f",
-      "size": 4046
-    },
-    {
-      "path": "extensions/other/thingspeak/toolbox.js",
-      "sha256": "5bfb83b776e2a79f484808a7a1c8433a263e68142cf570fead266b47bf1efb54",
-      "size": 4841
-    },
-    {
-      "path": "extensions/other/wifisimple/asset/wifisimple.svg",
-      "sha256": "58b675952a7e08c38a2e2e1a4121c55a70943e8698d7cd7d8aec4edc805b5cba",
-      "size": 482
-    },
-    {
-      "path": "extensions/other/wifisimple/blocks.js",
-      "sha256": "0b73a2581191ae33645941b7222ffdbf1ba39d8e1f519ef5aab7cebc76f7361a",
-      "size": 1811
-    },
-    {
-      "path": "extensions/other/wifisimple/generator.js",
-      "sha256": "e4609d543fb5ef9ff45eaa4e9acb1b0fc4c027e4d0c53e523373f3a10e66714e",
-      "size": 1451
-    },
-    {
-      "path": "extensions/other/wifisimple/index.js",
-      "sha256": "45e4d192065897b9608a5bc4a8b1c2f50eb75f17902b69760f9597297bd74d9e",
-      "size": 755
-    },
-    {
-      "path": "extensions/other/wifisimple/msg.js",
-      "sha256": "9be66032a414f5e06737d925300492d036a6537ab06c94d75327fcfee0de30d0",
-      "size": 1421
-    },
-    {
-      "path": "extensions/other/wifisimple/toolbox.js",
-      "sha256": "15a8c0cdf7f3c25dd99cdd5fd45ebbacdaa872192e85d8b7b4d6d4c849a54205",
-      "size": 806
-    }
-  ]
+{
+    "packName":  "KidsBlock ESP32 Education Pack",
+    "packVersion":  "0.5-Preview",
+    "releaseDate":  "2026-08-04",
+    "status":  "Preview Release",
+    "extensions":  [
+                       {
+                           "category":  "other",
+                           "folder":  "bleuart3",
+                           "displayName":  "BLE UART 3"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "environment",
+                           "displayName":  "Environment"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "esp32_system_info",
+                           "displayName":  "ESP32 System Information"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "espnow_esp32",
+                           "displayName":  "ESP-NOW ESP32"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "httpserver",
+                           "displayName":  "HTTP Server"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "kbcsv_esp32",
+                           "displayName":  "Data Processing ESP32"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "kbsd_esp32",
+                           "displayName":  "KBSD ESP32"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "ntpclock",
+                           "displayName":  "NTP Clock"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "thingspeak",
+                           "displayName":  "ThingSpeak"
+                       },
+                       {
+                           "category":  "other",
+                           "folder":  "wifisimple",
+                           "displayName":  "Wi-Fi Simple"
+                       }
+                   ],
+    "files":  [
+                  {
+                      "path":  "extensions/other/bleuart3/asset/bleuart.svg",
+                      "sha256":  "cca2f08416874ff11f14da47bd6948c18c8def0db268b934e88810fd61149141",
+                      "size":  400
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/blocks.js",
+                      "sha256":  "d2d7dbf7089d5960358e92839187228ea8433c6e3b4ab803b90bf3d3d353911b",
+                      "size":  2007
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/generator.js",
+                      "sha256":  "09e10ea85a9abf0c5b795766b4bbd66eb82683435bfc115ae0866162daf3e325",
+                      "size":  3004
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/index.js",
+                      "sha256":  "584cb3481a6c8f9f081e7c109ed5727497d8ba70e350fe5715c85020a2935542",
+                      "size":  701
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/lib/KBBLEUART3/library.properties",
+                      "sha256":  "0a084845a8cfe7c1795f9ac36c35d94966bee2d6d45fcdbbe7aa9458596f9d9e",
+                      "size":  324
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/lib/KBBLEUART3/src/KBBLEUART3.cpp",
+                      "sha256":  "ffd98b50c5f6c8be7dc353a91059c1d97463abcd184d519e0b191978d8863df7",
+                      "size":  10311
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/lib/KBBLEUART3/src/KBBLEUART3.h",
+                      "sha256":  "0ea337815d911958507a5dee1f1d3b5775b55c4bca1fabd75891937b42760149",
+                      "size":  3035
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/msg.js",
+                      "sha256":  "8bea4b08d315b87fa6c710301fb90f3fcf0336c11738cae740113dd1c641b65f",
+                      "size":  2565
+                  },
+                  {
+                      "path":  "extensions/other/bleuart3/toolbox.js",
+                      "sha256":  "d189cdba1dec9f220d0e31ac163e412b50c705f0c0795e5f133b06d386421ec8",
+                      "size":  5684
+                  },
+                  {
+                      "path":  "extensions/other/environment/asset/environment.svg",
+                      "sha256":  "49283471d34ff937e6ffbf3e2cc249d811884b3b4de3c203f31b07bcac61995e",
+                      "size":  568
+                  },
+                  {
+                      "path":  "extensions/other/environment/blocks.js",
+                      "sha256":  "f349c274c439c8f81ee6c52380f40340c27fff747c593bd5355682aa8cd0f25d",
+                      "size":  1498
+                  },
+                  {
+                      "path":  "extensions/other/environment/generator.js",
+                      "sha256":  "229885231e3d3250152590f6cf75a17dcb78ebf1118bc867f6f0eebf9f7d3a45",
+                      "size":  1540
+                  },
+                  {
+                      "path":  "extensions/other/environment/index.js",
+                      "sha256":  "9871b9bf0aa9b3ce5c7282cdbb4ee5736c60ecf965392afda5a1df92b58bc90f",
+                      "size":  849
+                  },
+                  {
+                      "path":  "extensions/other/environment/lib/Environment/examples/EnvironmentTest/EnvironmentTest.ino",
+                      "sha256":  "dbb48502ea6de79d22a47b3c9f2982250dd9110dd64211b52e088068f0c53566",
+                      "size":  533
+                  },
+                  {
+                      "path":  "extensions/other/environment/lib/Environment/library.properties",
+                      "sha256":  "9d68912b72e26f313233f5f1b91ea6ad1c6596e00aa769f900a8f7c02e9826c7",
+                      "size":  321
+                  },
+                  {
+                      "path":  "extensions/other/environment/lib/Environment/src/Environment.cpp",
+                      "sha256":  "0054e182e4fb7957dd1085a02893c26e427361d584b89a231fc05fabe076941b",
+                      "size":  638
+                  },
+                  {
+                      "path":  "extensions/other/environment/lib/Environment/src/Environment.h",
+                      "sha256":  "36b00c4c50c31eb2cd5fed0e4ef10814a0a51770f312c36dcd1d4ebcd9c93221",
+                      "size":  596
+                  },
+                  {
+                      "path":  "extensions/other/environment/msg.js",
+                      "sha256":  "663e3fb4613bd95a6899a1a404c8dee6a7a5a57e7f929272a1387b9110488aa6",
+                      "size":  1256
+                  },
+                  {
+                      "path":  "extensions/other/environment/toolbox.js",
+                      "sha256":  "66c28aa9185725575469d7f31ec530fae53c1bff4698e22b3cb6fd0c3f32e7b8",
+                      "size":  832
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/asset/esp32_system_info.jpg",
+                      "sha256":  "fd9a22949dff206079fdfbf552ea75b7f8cc2625be390e22ccdc5d686788e635",
+                      "size":  15842
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/blocks.js",
+                      "sha256":  "9ec4c6fa174f139786b06deb2c436626023b442ce93f0636ccaaf1f8747cd05b",
+                      "size":  4322
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/generator.js",
+                      "sha256":  "9c0a31537d13ba383554bcf2a3bcde5ece4637845c69ff3537553076ca918b00",
+                      "size":  6233
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/index.js",
+                      "sha256":  "bda05c4bb70148df51c5ab2bd55a84af36cf5b2f73217590eb3bc2e8d876438f",
+                      "size":  937
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/msg.js",
+                      "sha256":  "b46f2e55504ce675efca14bf00a85b5135378ddb5611eb9569b6cc213da18997",
+                      "size":  3147
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/README.txt",
+                      "sha256":  "4bb30973cc5fb72cb7a536e11efbec50c6d9120a3df44ca3b7fbadd8563132ea",
+                      "size":  1059
+                  },
+                  {
+                      "path":  "extensions/other/esp32_system_info/toolbox.js",
+                      "sha256":  "86650de575a81960fa53570290e22d69d3b497ff16c4033ca838b6edba9ebca9",
+                      "size":  1895
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/asset/espnow_esp32.svg",
+                      "sha256":  "64005ea5b32a9561d56df990ebf660ce4aa586b8ba30144c2eb4879c35a731c9",
+                      "size":  560
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/blocks.js",
+                      "sha256":  "5a8fd8237efa68f84635bc2c541b00ce78dd8bf9ae649c74c05b53aa1aa239a8",
+                      "size":  1851
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/generator.js",
+                      "sha256":  "ce1a5b02117963947c475bef435a6fb810328c8ea6e2fff00380b2e59ff3085f",
+                      "size":  1568
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/index.js",
+                      "sha256":  "b1834ebe585b7b1a86e71a42f619378c44f69ea5dfe3c5f36fa54b966647b151",
+                      "size":  928
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/lib/ESPNowEducation/library.properties",
+                      "sha256":  "244515e52f5405b2f4be6f7fffb7d77257fc57028989e52c406117de169857a5",
+                      "size":  343
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/lib/ESPNowEducation/src/ESPNowEducation.cpp",
+                      "sha256":  "070d8a97441503062ea9c17dce5c7930fee85b1b51766de4cd058009151bc7c4",
+                      "size":  4672
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/lib/ESPNowEducation/src/ESPNowEducation.h",
+                      "sha256":  "9995d438cb0f46c5707ef9f96a6afaf96886327dcbe8bfbd9e5e7932e4088fa7",
+                      "size":  1233
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/msg.js",
+                      "sha256":  "2b2d39bc9e40071c0d5b46937738af7d92bcbee6158fd35237caf6d7b90c78c1",
+                      "size":  1635
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/README.txt",
+                      "sha256":  "b388586a25c43ce849c0c63801a4d97d594b98353a09abec7136d476ff26cac7",
+                      "size":  823
+                  },
+                  {
+                      "path":  "extensions/other/espnow_esp32/toolbox.js",
+                      "sha256":  "1c766b1230f8b7da692714e949a4f4fba8bad8e6c3abddbdcb57f78f414ee0f8",
+                      "size":  975
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/asset/sensorserver.svg",
+                      "sha256":  "ead9045d67f99304b8e66e73acaf96c1902b85b276e75e33b6f94c6f044af49d",
+                      "size":  472
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/blocks.js",
+                      "sha256":  "cb0870b2d94426ed335111f06207cb0d17b7d865271c5364e1bd29b84d48e82e",
+                      "size":  6298
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/examples/HTTPServer_Browser_Control_Test.ino",
+                      "sha256":  "16716290f3fa234b3adcfbb69204703feb8249a353161189b4319de655666030",
+                      "size":  543
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/generator.js",
+                      "sha256":  "1d138b09586b3b372a6439409473ea37287d4e823f3b32c5f5ecc96963566a4d",
+                      "size":  5794
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/index.js",
+                      "sha256":  "bcf6eb0a748f7e276042292c249b6d4036b76df177823f0f664eb612af7f1d9a",
+                      "size":  762
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/lib/SensorServer32/library.properties",
+                      "sha256":  "e848155214b78ead354520f56c769a99ddd6530536001e247e1ac505c262ef19",
+                      "size":  362
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/lib/SensorServer32/src/SensorServer32.cpp",
+                      "sha256":  "1bdaa48056e600e92133d0d0c67034268dc4fe1f897b55e6cea2ffa9fc622906",
+                      "size":  17319
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/lib/SensorServer32/src/SensorServer32.h",
+                      "sha256":  "6762516e70078de9a9a64fb99a38fe54ac7cf6093ec8f24d05981abe30650b10",
+                      "size":  3260
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/msg.js",
+                      "sha256":  "5d519249408e34e9d864c6012dda52b10889a197a27607118ed2a2e1ab442abf",
+                      "size":  4792
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/README_JA.txt",
+                      "sha256":  "1a5ebee040e73e94287a3f9b791c26650ae1c297e92fe5e6bd04dfc7a616f1f0",
+                      "size":  1027
+                  },
+                  {
+                      "path":  "extensions/other/httpserver/toolbox.js",
+                      "sha256":  "0c1a3ce4ce8b3530bf56cff5de555c75fb24389b9830105377592f225bee9342",
+                      "size":  2180
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/asset/kbcsv_esp32.jpg",
+                      "sha256":  "9521fa45517cc7c4ea3273d203c063a2d9cb2578729f6cbfc39f68b96011d219",
+                      "size":  20711
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/blocks.js",
+                      "sha256":  "2d51773e6d2bf18979ae5798ae96bd1dee4191352bed3b006714d2df94cc16bd",
+                      "size":  5885
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/generator.js",
+                      "sha256":  "7d358f2c5adfbe602c6eb3b6bf890fd6f5b9a31233db966d3ba95d2bb139d265",
+                      "size":  8951
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/index.js",
+                      "sha256":  "4c7689b016f140942a4b0f5c0eed900c9325e72750abf3f3264c8ff5427643a4",
+                      "size":  948
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/lib/KBCSV_ESP32/KBCSV_ESP32.h",
+                      "sha256":  "ae273eaf95b699814ebca8ddcae3d5b56cd14a28207c80fff209682003ab1bc8",
+                      "size":  74
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/lib/KBCSV_ESP32/library.properties",
+                      "sha256":  "88f90444e159227f5b0173fdd0a4b9114eb12c3c5ffa6cb6dfe3cb611f9afc83",
+                      "size":  363
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/msg.js",
+                      "sha256":  "92af965a704f7c892dfbbfc558c06899944b480cfeb739b834e5289b20835a0d",
+                      "size":  2114
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/README.txt",
+                      "sha256":  "1a94829fc4088f4712743b83b031276ef83759e2e5de2ebad5361fd20632135d",
+                      "size":  712
+                  },
+                  {
+                      "path":  "extensions/other/kbcsv_esp32/toolbox.js",
+                      "sha256":  "8dc46a4a70ee2a6be099f71a599e190a0f69ebb70385b28b3449ab177e00a5a6",
+                      "size":  2561
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/asset/kbsd_esp32.jpg",
+                      "sha256":  "653061ada350f8c53c866daa7be82012c00005b54be1f2f4b79f5944eef7a7fa",
+                      "size":  44238
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/blocks.js",
+                      "sha256":  "a544e04177965d4cabac35fa98838878f998efbdf32a0743061e367de4076185",
+                      "size":  5378
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/generator.js",
+                      "sha256":  "cb4d0c7ef1dfa22383e4a766e9fd0c8be5a660d8724a42e09c9a4f69fc4f2b9a",
+                      "size":  8691
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/index.js",
+                      "sha256":  "e06f20b9a93ba6cca9802f83fe09d78e78743250f7084138214d52f51a9b3e40",
+                      "size":  847
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/lib/KBSD_ESP32/KBSD_ESP32.h",
+                      "sha256":  "b3adf106d95b8934f690943f2921308b90be5b766c4c8ba250c792de56400201",
+                      "size":  13
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/lib/KBSD_ESP32/library.properties",
+                      "sha256":  "6cb1297a8225596ac2ddb8a437c9b7651106003267621e2cfc69747b9f91b58b",
+                      "size":  274
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/msg.js",
+                      "sha256":  "0f0df99d94aed9e3dd9a524ba8b1330a5bd3cf5781fd23ea01ecdaa0bb5f6b24",
+                      "size":  1858
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/README.txt",
+                      "sha256":  "ddc8dd325eb8b362a9f1b9b4c0403df4e30aedafd40f10ccc649b08e9ffa784a",
+                      "size":  2270
+                  },
+                  {
+                      "path":  "extensions/other/kbsd_esp32/toolbox.js",
+                      "sha256":  "aacb13b97a3524f2e74639a9bf19499e319373f5d1d6736810c6d0c1e0859d92",
+                      "size":  1512
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/asset/ntpclock.svg",
+                      "sha256":  "28d422626ee34234108d026cd97fcb29daaca16b014e0cb138eae4333bab0314",
+                      "size":  415
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/blocks.js",
+                      "sha256":  "4e72bdd8228d3c42a5288082ae6b076882cfcca2eafc37eb2b8aaa505fc47833",
+                      "size":  2214
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/generator.js",
+                      "sha256":  "f4a73dd734b3bcd52c1b695b6b0d2819803ed9c95a1c1ef07736fc7d89ecf028",
+                      "size":  1691
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/index.js",
+                      "sha256":  "aae50fb4fd3ca641422b412cf089a6a53593e80a4af3c606e686f3dd788b8f5d",
+                      "size":  748
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/lib/NTPClock/examples/NTPClockTest/NTPClockTest.ino",
+                      "sha256":  "39c68f07b8ecf64c2cdf16341d8b3b854524b5d66aeafc6bf6ceed783763347b",
+                      "size":  473
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/lib/NTPClock/library.properties",
+                      "sha256":  "a91e0e57aa62a572c3dbc24e6eec800cbaea58d4ac9ff20c666a19a24465bd19",
+                      "size":  295
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/lib/NTPClock/src/NTPClock.cpp",
+                      "sha256":  "d9c9be3b481bee147a071e53c13f25762fa686c85d7cee1f4791c1dd9b890d70",
+                      "size":  2813
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/lib/NTPClock/src/NTPClock.h",
+                      "sha256":  "7775cba06e45bc011a0dc4c6ba80eb9bab91fe5489bdde23b405262e89bbc7b8",
+                      "size":  908
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/msg.js",
+                      "sha256":  "11ee6cb04f35ce317e93b3919ab5c2065fdfd02fd77756be7b7f19ac7ca0810b",
+                      "size":  2190
+                  },
+                  {
+                      "path":  "extensions/other/ntpclock/toolbox.js",
+                      "sha256":  "63ac1f737bc9555fd5e4bfc717b15869e0ea419a0e41f2508d16cbf84e2ed81a",
+                      "size":  1126
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/asset/thingspeak.svg",
+                      "sha256":  "c181dec33771b79f8154547abc5c715c965b79fde21f9814248bd85bbf304234",
+                      "size":  310
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/blocks.js",
+                      "sha256":  "b45cce01167dbce1675326c52c6a201057cad604a7907f73883dd9d0e663b28f",
+                      "size":  2750
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/generator.js",
+                      "sha256":  "4a7de2e4bd3f5c2d32588fafe18a04cf813f147f02f6aecd7cd8f2b5b517fb25",
+                      "size":  2149
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/index.js",
+                      "sha256":  "37a4cece88ec7d769bae84d104318eff03ecbe4404d646ff4288627262eeddfe",
+                      "size":  770
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/lib/KBThingSpeak/examples/ThingSpeakTest/ThingSpeakTest.ino",
+                      "sha256":  "b98fa321411be417bdb804f3cbcc634c0e6bd6e3dc511d5841d671fa60ca6d4e",
+                      "size":  1362
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/lib/KBThingSpeak/library.properties",
+                      "sha256":  "17a05af236de47b49d898e18ffea363b421d551605104c7f9c83202b2602cad4",
+                      "size":  327
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/lib/KBThingSpeak/src/KBThingSpeak.cpp",
+                      "sha256":  "ead36454cf5a7195b060afac3989b96f0e13da527793889ef8a8130ddca65f29",
+                      "size":  7281
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/lib/KBThingSpeak/src/KBThingSpeak.h",
+                      "sha256":  "f6dbf64722470c3050d6422a2659e788f68e539667332bae9c99eab23f1aebef",
+                      "size":  2010
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/msg.js",
+                      "sha256":  "ac5bb6bab2d55bf9707b4cdc16e4e635d2fb9ef779c7fb840eb63c871001336f",
+                      "size":  4046
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/README_Ver1.2.2.txt",
+                      "sha256":  "d494ff0795c5676879b9081caf3b299d7a510cbcb612d0d5da99ec0e3bbaf640",
+                      "size":  878
+                  },
+                  {
+                      "path":  "extensions/other/thingspeak/toolbox.js",
+                      "sha256":  "5bfb83b776e2a79f484808a7a1c8433a263e68142cf570fead266b47bf1efb54",
+                      "size":  4841
+                  },
+                  {
+                      "path":  "extensions/other/wifisimple/asset/wifisimple.svg",
+                      "sha256":  "58b675952a7e08c38a2e2e1a4121c55a70943e8698d7cd7d8aec4edc805b5cba",
+                      "size":  482
+                  },
+                  {
+                      "path":  "extensions/other/wifisimple/blocks.js",
+                      "sha256":  "0b73a2581191ae33645941b7222ffdbf1ba39d8e1f519ef5aab7cebc76f7361a",
+                      "size":  1811
+                  },
+                  {
+                      "path":  "extensions/other/wifisimple/generator.js",
+                      "sha256":  "e4609d543fb5ef9ff45eaa4e9acb1b0fc4c027e4d0c53e523373f3a10e66714e",
+                      "size":  1451
+                  },
+                  {
+                      "path":  "extensions/other/wifisimple/index.js",
+                      "sha256":  "45e4d192065897b9608a5bc4a8b1c2f50eb75f17902b69760f9597297bd74d9e",
+                      "size":  755
+                  },
+                  {
+                      "path":  "extensions/other/wifisimple/msg.js",
+                      "sha256":  "9be66032a414f5e06737d925300492d036a6537ab06c94d75327fcfee0de30d0",
+                      "size":  1421
+                  },
+                  {
+                      "path":  "extensions/other/wifisimple/toolbox.js",
+                      "sha256":  "15a8c0cdf7f3c25dd99cdd5fd45ebbacdaa872192e85d8b7b4d6d4c849a54205",
+                      "size":  806
+                  }
+              ]
 }
