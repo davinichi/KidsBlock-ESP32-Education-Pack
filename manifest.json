@@ -73,7 +73,7 @@
                   },
                   {
                       "path":  "extensions/other/bleuart3/index.js",
-                      "sha256":  "584cb3481a6c8f9f081e7c109ed5727497d8ba70e350fe5715c85020a2935542",
+                      "sha256":  "5802666b600ecc634f5985557ef2461e794e641d83c294450bc2fc13c0cc80ee",
                       "size":  701
                   },
                   {
@@ -118,7 +118,7 @@
                   },
                   {
                       "path":  "extensions/other/environment/index.js",
-                      "sha256":  "9871b9bf0aa9b3ce5c7282cdbb4ee5736c60ecf965392afda5a1df92b58bc90f",
+                      "sha256":  "9cda0d22e3dccc082b52f881fb324b46c226eb8aa2f98706221a6d959e7c6cf3",
                       "size":  849
                   },
                   {
@@ -398,7 +398,7 @@
                   },
                   {
                       "path":  "extensions/other/ntpclock/index.js",
-                      "sha256":  "aae50fb4fd3ca641422b412cf089a6a53593e80a4af3c606e686f3dd788b8f5d",
+                      "sha256":  "4fbc7ed3b390564e9f363c69de6c2aefb25aaf72a0e5c55ac4d32304b711d2de",
                       "size":  748
                   },
                   {

@@ -5,7 +5,7 @@ const BLEUART3 = formatMessage => ({
     description: 'BLE UART 3 blocks'
   }),
   extensionId: 'BLEUART3',
-  version: '3.0.1',
+  version: '3.0.2',
   type: 'arduino',
   supportDevice: ['arduinoEsp32'],
   author: 'davinichi',

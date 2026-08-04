@@ -5,7 +5,7 @@ const NTPClock = formatMessage => ({
     description: 'NTP clock blocks'
   }),
   extensionId: 'NTPClock',
-  version: '1.2.0',
+  version: '1.3.0',
   type: 'arduino',
   supportDevice: [
     'arduinoEsp32',
