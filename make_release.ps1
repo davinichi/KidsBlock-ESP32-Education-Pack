@@ -1,24 +1,103 @@
 param(
     [Parameter(Mandatory = $false)]
     [ValidateNotNullOrEmpty()]
-    [string]$PackVersion = '1.0.0',
+    [string]$PackVersion,
 
     [Parameter(Mandatory = $false)]
     [ValidateNotNullOrEmpty()]
-    [string]$ReleaseDate = (Get-Date -Format 'yyyy-MM-dd'),
+    [string]$ReleaseDate,
 
     [Parameter(Mandatory = $false)]
     [ValidateSet('Stable Release', 'Preview Release', 'Beta Release')]
-    [string]$ReleaseStatus = 'Stable Release'
+    [string]$ReleaseStatus
 )
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
 
-$PackName = 'KidsBlock ESP32 Education Pack'
 $SourceRoot = $PSScriptRoot
+$ReleaseJsonPath = Join-Path $SourceRoot 'release.json'
+
+function Read-ReleaseConfiguration {
+    param([string]$Path)
+
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
+        throw "Release metadata file was not found: $Path"
+    }
+
+    try {
+        $release = Get-Content -LiteralPath $Path -Raw -Encoding UTF8 | ConvertFrom-Json
+    }
+    catch {
+        throw "release.json is not valid JSON: $($_.Exception.Message)"
+    }
+
+    if ($null -eq $release.PSObject.Properties['schemaVersion']) {
+        throw 'release.json is missing required property: schemaVersion'
+    }
+    if ([string]$release.schemaVersion -ne '1') {
+        throw "Unsupported release.json schemaVersion: $($release.schemaVersion). Expected: 1"
+    }
+    if ($null -eq $release.PSObject.Properties['pack'] -or $null -eq $release.pack) {
+        throw 'release.json is missing required property: pack'
+    }
+
+    $requiredPackProperties = @('name', 'version', 'releaseDate', 'status')
+    foreach ($propertyName in $requiredPackProperties) {
+        $property = $release.pack.PSObject.Properties[$propertyName]
+        if ($null -eq $property -or [string]::IsNullOrWhiteSpace([string]$property.Value)) {
+            throw "release.json is missing required property: pack.$propertyName"
+        }
+    }
+
+    $configuredReleaseDate = [string]$release.pack.releaseDate
+    if ($configuredReleaseDate -notmatch '^\d{4}-\d{2}-\d{2}$') {
+        throw "release.json pack.releaseDate must use YYYY-MM-DD format: $configuredReleaseDate"
+    }
+
+    return [pscustomobject]@{
+        Name        = [string]$release.pack.name
+        Version     = [string]$release.pack.version
+        ReleaseDate = $configuredReleaseDate
+        Status      = [string]$release.pack.status
+    }
+}
+
+function Resolve-ReleaseConfiguration {
+    param(
+        [pscustomobject]$Configuration,
+        [System.Collections.IDictionary]$BoundArguments
+    )
+
+    $comparisons = @(
+        [pscustomobject]@{ Parameter = 'PackVersion'; Expected = $Configuration.Version },
+        [pscustomobject]@{ Parameter = 'ReleaseDate'; Expected = $Configuration.ReleaseDate },
+        [pscustomobject]@{ Parameter = 'ReleaseStatus'; Expected = $Configuration.Status }
+    )
+
+    foreach ($comparison in $comparisons) {
+        if ($BoundArguments.Contains($comparison.Parameter)) {
+            $actual = [string]$BoundArguments[$comparison.Parameter]
+            if ($actual -ne [string]$comparison.Expected) {
+                throw "Parameter -$($comparison.Parameter) does not match release.json. Expected '$($comparison.Expected)', received '$actual'."
+            }
+        }
+    }
+
+    return $Configuration
+}
+
+$releaseConfiguration = Read-ReleaseConfiguration $ReleaseJsonPath
+$releaseConfiguration = Resolve-ReleaseConfiguration $releaseConfiguration $PSBoundParameters
+
+$PackName = $releaseConfiguration.Name
+$PackVersion = $releaseConfiguration.Version
+$ReleaseDate = $releaseConfiguration.ReleaseDate
+$ReleaseStatus = $releaseConfiguration.Status
+
 $DistRoot = Join-Path $SourceRoot 'dist'
-$FolderName = "KidsBlock-ESP32-Education-Pack-v$PackVersion"
+$PackFolderName = $PackName.Replace(' ', '-')
+$FolderName = "$PackFolderName-v$PackVersion"
 $StageRoot = Join-Path $DistRoot $FolderName
 $ZipPath = Join-Path $DistRoot ("{0}.zip" -f $FolderName)
 $ZipHashPath = "$ZipPath.sha256.txt"
