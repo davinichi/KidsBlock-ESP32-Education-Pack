@@ -9,7 +9,10 @@ param(
 
     [Parameter(Mandatory = $false)]
     [ValidateSet('Stable Release', 'Preview Release', 'Beta Release')]
-    [string]$ReleaseStatus
+    [string]$ReleaseStatus,
+
+    [Parameter(Mandatory = $false)]
+    [switch]$ValidateOnly
 )
 
 $ErrorActionPreference = 'Stop'
@@ -76,7 +79,7 @@ function Resolve-ReleaseConfiguration {
     )
 
     foreach ($comparison in $comparisons) {
-        if ($BoundArguments.Contains($comparison.Parameter)) {
+        if ($BoundArguments.ContainsKey($comparison.Parameter)) {
             $actual = [string]$BoundArguments[$comparison.Parameter]
             if ($actual -ne [string]$comparison.Expected) {
                 throw "Parameter -$($comparison.Parameter) does not match release.json. Expected '$($comparison.Expected)', received '$actual'."
@@ -102,6 +105,7 @@ $StageRoot = Join-Path $DistRoot $FolderName
 $ZipPath = Join-Path $DistRoot ("{0}.zip" -f $FolderName)
 $ZipHashPath = "$ZipPath.sha256.txt"
 $VerifyRoot = Join-Path $DistRoot '_verify'
+$CheckVersionsPath = Join-Path $SourceRoot 'tools\check_versions.ps1'
 
 function Write-Step {
     param([string]$Message)
@@ -119,6 +123,35 @@ function Assert-Directory {
     param([string]$Path, [string]$Description)
     if (-not (Test-Path -LiteralPath $Path -PathType Container)) {
         throw "Missing $Description`: $Path"
+    }
+}
+
+function Invoke-VersionValidation {
+    Assert-File $CheckVersionsPath 'version check script'
+
+    $powerShellExecutable = if ($PSVersionTable.PSEdition -eq 'Core') {
+        (Get-Process -Id $PID).Path
+    }
+    else {
+        Join-Path $PSHOME 'powershell.exe'
+    }
+
+    Write-Step 'Checking release and extension version consistency...'
+    $validationOutput = @(& $powerShellExecutable `
+        -NoLogo `
+        -NoProfile `
+        -NonInteractive `
+        -ExecutionPolicy Bypass `
+        -File $CheckVersionsPath `
+        -Quiet 2>&1)
+    $validationExitCode = $LASTEXITCODE
+
+    foreach ($line in $validationOutput) {
+        Write-Host $line
+    }
+
+    if ($validationExitCode -ne 0) {
+        throw "Version consistency check failed with exit code $validationExitCode. Run tools/check_versions.ps1 for details."
     }
 }
 
@@ -284,6 +317,24 @@ Write-Host ("Date    : {0}" -f $ReleaseDate)
 Write-Host ("Status  : {0}" -f $ReleaseStatus)
 Write-Host ''
 
+# Validate all source version metadata before changing dist or staged files.
+Invoke-VersionValidation
+
+if ($ValidateOnly) {
+    Write-Host ''
+    Write-Host '============================================================'
+    Write-Host ' Validation completed successfully. No files were changed.'
+    Write-Host '============================================================'
+    Write-Host ("Pack name      : {0}" -f $PackName)
+    Write-Host ("Version        : {0}" -f $PackVersion)
+    Write-Host ("Release date   : {0}" -f $ReleaseDate)
+    Write-Host ("Status         : {0}" -f $ReleaseStatus)
+    Write-Host ("Release folder : {0}" -f $FolderName)
+    Write-Host ("ZIP name       : {0}" -f (Split-Path -Leaf $ZipPath))
+    Write-Host ''
+    exit 0
+}
+
 # Basic project validation.
 Write-Step 'Checking the development project...'
 Assert-Directory (Join-Path $SourceRoot 'extensions') 'source extensions folder'
@@ -304,6 +355,7 @@ $excludedRootNames = @(
     'dist',
     'manifest.json',
     'make_release.ps1',
+    'VERSION.txt',
     'install_result.txt',
     'uninstall_result.txt',
     'backup'
@@ -316,15 +368,11 @@ Get-ChildItem -LiteralPath $SourceRoot -Force |
         Copy-Item -LiteralPath $_.FullName -Destination $StageRoot -Recurse -Force
     }
 
-# Write release metadata before manifest hashing.
-Write-Step 'Writing version information...'
-$versionText = @(
-    $PackName,
-    "Version: v$PackVersion",
-    "Release Date: $ReleaseDate",
-    "Status: $ReleaseStatus"
-) -join "`r`n"
-Set-Content -LiteralPath (Join-Path $StageRoot 'VERSION.txt') -Value $versionText -Encoding UTF8
+# Copy the already validated VERSION.txt byte-for-byte without rebuilding it.
+Write-Step 'Copying verified version information...'
+Copy-Item -LiteralPath (Join-Path $SourceRoot 'VERSION.txt') `
+    -Destination (Join-Path $StageRoot 'VERSION.txt') `
+    -Force
 
 # Update the visible version in install.bat without modifying the development source.
 $stagedInstallBat = Join-Path $StageRoot 'install.bat'
