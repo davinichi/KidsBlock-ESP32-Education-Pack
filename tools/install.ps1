@@ -44,6 +44,79 @@ function Find-DesktopRoot {
     return $null
 }
 
+function Get-StateEntries([object]$State) {
+    if ($null -eq $State) { return @() }
+    $entriesProperty = $State.PSObject.Properties['entries']
+    if ($null -eq $entriesProperty -or $null -eq $entriesProperty.Value) { return @() }
+    return @($entriesProperty.Value)
+}
+
+function Read-InstallStateHistory {
+    $states = @()
+    $hasActiveState = Test-Path -LiteralPath $StatePath -PathType Leaf
+
+    if ($hasActiveState) {
+        try {
+            $activeState = Get-Content -LiteralPath $StatePath -Raw -Encoding UTF8 | ConvertFrom-Json
+            $activeEntries = @(Get-StateEntries $activeState)
+            if ($activeEntries.Count -eq 0) {
+                throw 'Active install state has no entries.'
+            }
+            $states += $activeState
+            Write-Log "Loaded active install state: $StatePath"
+        }
+        catch {
+            throw "Could not read active install state: $($_.Exception.Message)"
+        }
+    }
+
+    if ($hasActiveState -and (Test-Path -LiteralPath $BackupBase -PathType Container)) {
+        $historyFiles = @(Get-ChildItem -LiteralPath $BackupBase -Filter 'install_state.json' -File -Recurse |
+            Sort-Object LastWriteTimeUtc -Descending)
+        foreach ($historyFile in $historyFiles) {
+            try {
+                $historyState = Get-Content -LiteralPath $historyFile.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+                $historyEntries = @(Get-StateEntries $historyState)
+                if ($historyEntries.Count -gt 0) {
+                    $states += $historyState
+                }
+            }
+            catch {
+                Write-Log "WARNING: Ignored unreadable install state history: $($historyFile.FullName)"
+            }
+        }
+    }
+
+    return @($states)
+}
+
+function Get-PreviousOwnedEntry([object[]]$States, [string]$Target) {
+    foreach ($historyState in $States) {
+        foreach ($entry in (Get-StateEntries $historyState)) {
+            $targetProperty = $entry.PSObject.Properties['target']
+            $actionProperty = $entry.PSObject.Properties['action']
+            if ($null -eq $targetProperty -or $null -eq $actionProperty) { continue }
+            if (-not [string]::Equals([string]$targetProperty.Value, $Target, [StringComparison]::OrdinalIgnoreCase)) { continue }
+
+            $action = [string]$actionProperty.Value
+            if ($action -in @('Installed', 'Updated', 'Replaced')) {
+                return $entry
+            }
+        }
+    }
+
+    return $null
+}
+
+function Get-EntryBackup([object]$Entry) {
+    if ($null -eq $Entry) { return $null }
+    $backupProperty = $Entry.PSObject.Properties['backup']
+    if ($null -eq $backupProperty -or [string]::IsNullOrWhiteSpace([string]$backupProperty.Value)) {
+        return $null
+    }
+    return [string]$backupProperty.Value
+}
+
 function Read-And-VerifyManifest {
     if (-not (Test-Path -LiteralPath $ManifestPath)) {
         throw "Missing manifest: $ManifestPath"
@@ -85,6 +158,7 @@ try {
     $PackVersion = [string]$manifest.packVersion
     $Stamp = Get-Date -Format 'yyyyMMdd_HHmmss'
     $BackupRoot = Join-Path $BackupBase ("v{0}_{1}" -f $PackVersion, $Stamp)
+    $previousStates = @(Read-InstallStateHistory)
 
     $Items = @($manifest.extensions | ForEach-Object {
         [pscustomobject]@{
@@ -130,20 +204,45 @@ try {
 
             $sourceHash = Get-TreeHash $source
             $targetHash = Get-TreeHash $target
-            $action = 'Installed'
+            $targetExists = Test-Path -LiteralPath $target
+            $previousEntry = Get-PreviousOwnedEntry $previousStates $target
+            $previousAction = if ($null -ne $previousEntry) { [string]$previousEntry.action } else { $null }
+            if ($previousAction -eq 'Replaced') { $previousAction = 'Updated' }
+
+            $action = if ($null -ne $previousAction) { $previousAction } elseif ($targetExists) { 'Updated' } else { 'Installed' }
             $backup = $null
+            $createBackup = $false
+
+            if ($action -eq 'Updated') {
+                $backup = Get-EntryBackup $previousEntry
+                if ($null -ne $previousEntry) {
+                    if ($null -eq $backup -or -not (Test-Path -LiteralPath $backup -PathType Container)) {
+                        throw "Previous backup is missing for updated extension: $target"
+                    }
+                }
+                elseif ($targetExists) {
+                    $backup = Join-Path (Join-Path $BackupRoot $targetInfo.Label) (Join-Path $item.Category $item.Name)
+                    $createBackup = $true
+                }
+            }
 
             if ($targetHash -and $targetHash -eq $sourceHash) {
-                $action = 'Skipped'
-                Write-Log "[$($targetInfo.Label)] Skipped unchanged: $($item.Display)"
+                if ($null -eq $previousEntry) {
+                    $action = 'Skipped'
+                    $backup = $null
+                    Write-Log "[$($targetInfo.Label)] Skipped pre-existing unchanged copy: $($item.Display)"
+                }
+                else {
+                    Write-Log "[$($targetInfo.Label)] Preserved $action ownership for unchanged copy: $($item.Display)"
+                }
             } else {
-                if (Test-Path -LiteralPath $target) {
-                    $action = 'Replaced'
-                    $backup = Join-Path (Join-Path $BackupRoot $targetInfo.Label) (Join-Path $item.Category $item.Name)
-                    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $backup) | Out-Null
-                    Copy-Item -LiteralPath $target -Destination $backup -Recurse -Force
+                if ($targetExists) {
+                    if ($createBackup) {
+                        New-Item -ItemType Directory -Force -Path (Split-Path -Parent $backup) | Out-Null
+                        Copy-Item -LiteralPath $target -Destination $backup -Recurse -Force
+                        Write-Log "[$($targetInfo.Label)] Backup: $target"
+                    }
                     Remove-Item -LiteralPath $target -Recurse -Force
-                    Write-Log "[$($targetInfo.Label)] Backup: $target"
                 }
 
                 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $target) | Out-Null

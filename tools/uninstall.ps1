@@ -14,15 +14,33 @@ try {
     if (-not (Test-Path -LiteralPath $StatePath)) { throw "Install state not found: $StatePath" }
     $state = Get-Content -LiteralPath $StatePath -Raw -Encoding UTF8 | ConvertFrom-Json
     foreach ($entry in $state.entries) {
-        if ($entry.action -eq 'Skipped') {
+        $action = [string]$entry.action
+        if ($action -eq 'Skipped') {
             Write-Log "[$($entry.label)] Kept unchanged: $($entry.display)"
             continue
         }
+
+        if ($action -eq 'Replaced') {
+            # Backward compatibility with install states created before Updated was introduced.
+            $action = 'Updated'
+        }
+
+        if ($action -notin @('Installed', 'Updated')) {
+            throw "Unknown install action '$($entry.action)' for: $($entry.target)"
+        }
+
+        if ($action -eq 'Updated') {
+            if (-not $entry.backup -or -not (Test-Path -LiteralPath $entry.backup -PathType Container)) {
+                throw "Backup not found for updated extension: $($entry.target)"
+            }
+        }
+
         if (Test-Path -LiteralPath $entry.target) {
             Remove-Item -LiteralPath $entry.target -Recurse -Force
             Write-Log "[$($entry.label)] Removed pack copy: $($entry.target)"
         }
-        if ($entry.action -eq 'Replaced' -and $entry.backup -and (Test-Path -LiteralPath $entry.backup)) {
+
+        if ($action -eq 'Updated') {
             New-Item -ItemType Directory -Force -Path (Split-Path -Parent $entry.target) | Out-Null
             Copy-Item -LiteralPath $entry.backup -Destination $entry.target -Recurse -Force
             Write-Log "[$($entry.label)] Restored previous copy: $($entry.target)"
