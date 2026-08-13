@@ -3,7 +3,9 @@
 function addMsg (Blockly) {
   Object.assign(Blockly.ScratchMsgs.locales.en, {
     ESPNOW_CATEGORY: 'ESP-NOW',
-    ESPNOW_BEGIN: 'start ESP-NOW',
+    ESPNOW_BEGIN: 'start ESP-NOW in %1 mode',
+    ESPNOW_MODE_NORMAL: 'normal',
+    ESPNOW_MODE_LONG_RANGE: 'Long Range',
     ESPNOW_SEND_TEXT: 'send ESP-NOW text %1 to destination MAC %2 (blank = all)',
     ESPNOW_HAS_NEW_DATA: 'ESP-NOW received new data',
     ESPNOW_RECEIVED_TEXT: 'ESP-NOW received text',
@@ -14,7 +16,9 @@ function addMsg (Blockly) {
 
   Object.assign(Blockly.ScratchMsgs.locales.ja, {
     ESPNOW_CATEGORY: 'ESP-NOW',
-    ESPNOW_BEGIN: 'ESP-NOWを始める',
+    ESPNOW_BEGIN: 'ESP-NOWを %1 モードで始める',
+    ESPNOW_MODE_NORMAL: '通常',
+    ESPNOW_MODE_LONG_RANGE: 'Long Range',
     ESPNOW_SEND_TEXT: 'ESP-NOWで文字列 %1 を送信先MACアドレス %2 へ送る（空欄なら全員）',
     ESPNOW_HAS_NEW_DATA: 'ESP-NOWで新しいデータを受信した',
     ESPNOW_RECEIVED_TEXT: 'ESP-NOWで受信した文字列',
@@ -25,7 +29,9 @@ function addMsg (Blockly) {
 
   Object.assign(Blockly.ScratchMsgs.locales['zh-cn'], {
     ESPNOW_CATEGORY: 'ESP-NOW',
-    ESPNOW_BEGIN: '启动ESP-NOW',
+    ESPNOW_BEGIN: '以 %1 模式启动ESP-NOW',
+    ESPNOW_MODE_NORMAL: '普通',
+    ESPNOW_MODE_LONG_RANGE: 'Long Range',
     ESPNOW_SEND_TEXT: '使用ESP-NOW发送文本 %1 到目标MAC地址 %2（空白=全部）',
     ESPNOW_HAS_NEW_DATA: 'ESP-NOW收到新数据',
     ESPNOW_RECEIVED_TEXT: 'ESP-NOW收到的文本',

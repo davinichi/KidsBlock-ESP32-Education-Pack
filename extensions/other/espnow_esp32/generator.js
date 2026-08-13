@@ -7,9 +7,11 @@ function addGenerator (Blockly) {
     Blockly.Arduino.definitions_.espnow_education_object = 'ESPNowEducation kbEspNow;';
   }
 
-  Blockly.Arduino.espnow_begin = function () {
+  Blockly.Arduino.espnow_begin = function (block) {
     addSupport();
-    return 'kbEspNow.begin();\n';
+    const mode = block.getFieldValue('MODE') || 'NORMAL';
+    const longRange = mode === 'LONG_RANGE' ? 'true' : 'false';
+    return `kbEspNow.begin(${longRange});\n`;
   };
 
   Blockly.Arduino.espnow_send_text = function (block) {

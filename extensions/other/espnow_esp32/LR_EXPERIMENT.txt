@@ -1,0 +1,13 @@
+KidsBlock ESP32 Education Pack - ESP-NOW Long Range Experimental Build
+
+This marker confirms that the Long Range experimental files were copied.
+Expected code markers:
+- ESPNowEducation.cpp contains WIFI_PROTOCOL_LR
+- ESPNowEducation.h contains begin(bool longRange = false)
+- blocks.js contains LONG_RANGE
+- generator.js generates kbEspNow.begin(true/false)
+
+Target working folder:
+C:\KidsBlock-ESP32-Education-Pack\extensions\other\espnow_esp32
+
+This is an experimental build for a future version and is not intended to modify v0.5.

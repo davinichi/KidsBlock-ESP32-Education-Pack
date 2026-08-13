@@ -10,7 +10,7 @@ class ESPNowEducation {
 public:
   ESPNowEducation();
 
-  bool begin();
+  bool begin(bool longRange = false);
   bool send(const String &message, const String &destinationMac = "");
 
   bool hasNewData();

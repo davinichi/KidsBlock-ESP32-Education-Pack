@@ -8,6 +8,16 @@ function addBlocks (Blockly) {
     init: function () {
       this.jsonInit({
         message0: Blockly.Msg.ESPNOW_BEGIN,
+        args0: [
+          {
+            type: 'field_dropdown',
+            name: 'MODE',
+            options: [
+              [Blockly.Msg.ESPNOW_MODE_NORMAL, 'NORMAL'],
+              [Blockly.Msg.ESPNOW_MODE_LONG_RANGE, 'LONG_RANGE']
+            ]
+          }
+        ],
         colour: color,
         extensions: ['shape_statement']
       });

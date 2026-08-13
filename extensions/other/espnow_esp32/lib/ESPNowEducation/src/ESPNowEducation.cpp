@@ -12,11 +12,23 @@ ESPNowEducation::ESPNowEducation()
   senderMac_[0] = '\0';
 }
 
-bool ESPNowEducation::begin() {
+bool ESPNowEducation::begin(bool longRange) {
   if (ready_) return true;
 
   WiFi.mode(WIFI_STA);
   delay(20);
+
+  // Select the Wi-Fi protocol before ESP-NOW is initialized.
+  // NORMAL: standard 802.11 b/g/n
+  // LONG RANGE: Espressif proprietary LR mode
+  uint8_t protocol = longRange
+      ? WIFI_PROTOCOL_LR
+      : (WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G | WIFI_PROTOCOL_11N);
+
+  if (esp_wifi_set_protocol(WIFI_IF_STA, protocol) != ESP_OK) {
+    ready_ = false;
+    return false;
+  }
 
   if (esp_now_init() != ESP_OK) {
     ready_ = false;
