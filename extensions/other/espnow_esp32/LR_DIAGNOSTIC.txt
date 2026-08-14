@@ -1,0 +1,13 @@
+ESP-NOW Long Range diagnostic build
+
+Added block:
+  ESP-NOWのWi-Fiモード診断をシリアルモニターに表示する
+
+Use it immediately after the ESP-NOW begin block.
+The block starts Serial at 115200 baud and prints the protocol bitmap returned by esp_wifi_get_protocol().
+
+Expected examples:
+NORMAL: 802.11b/g/n ON, Long Range OFF
+LR ONLY: Long Range ON, 802.11b/g/n OFF
+
+This is an experimental build for LR verification.

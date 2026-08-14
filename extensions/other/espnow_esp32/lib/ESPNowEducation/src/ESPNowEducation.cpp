@@ -108,6 +108,59 @@ bool ESPNowEducation::isReady() const {
   return ready_;
 }
 
+uint8_t ESPNowEducation::protocolBitmap() const {
+  uint8_t protocol = 0;
+  if (esp_wifi_get_protocol(WIFI_IF_STA, &protocol) != ESP_OK) {
+    return 0;
+  }
+  return protocol;
+}
+
+void ESPNowEducation::printProtocolInfo(uint32_t baud) const {
+  Serial.begin(baud);
+  delay(100);
+
+  uint8_t protocol = 0;
+  esp_err_t result = esp_wifi_get_protocol(WIFI_IF_STA, &protocol);
+
+  Serial.println();
+  Serial.println("========================================");
+  Serial.println(" ESP-NOW Wi-Fi Protocol Diagnostic");
+  Serial.println("========================================");
+
+  if (result != ESP_OK) {
+    Serial.print("esp_wifi_get_protocol failed: ");
+    Serial.println((int)result);
+    Serial.println("========================================");
+    return;
+  }
+
+  Serial.print("Protocol bitmap : 0x");
+  if (protocol < 0x10) Serial.print('0');
+  Serial.println(protocol, HEX);
+
+  Serial.print("802.11b         : ");
+  Serial.println((protocol & WIFI_PROTOCOL_11B) ? "ON" : "OFF");
+  Serial.print("802.11g         : ");
+  Serial.println((protocol & WIFI_PROTOCOL_11G) ? "ON" : "OFF");
+  Serial.print("802.11n         : ");
+  Serial.println((protocol & WIFI_PROTOCOL_11N) ? "ON" : "OFF");
+  Serial.print("Long Range (LR) : ");
+  Serial.println((protocol & WIFI_PROTOCOL_LR) ? "ON" : "OFF");
+
+  Serial.print("Detected mode   : ");
+  if (protocol == WIFI_PROTOCOL_LR) {
+    Serial.println("LR ONLY");
+  } else if ((protocol & WIFI_PROTOCOL_LR) != 0) {
+    Serial.println("NORMAL + LR (mixed)");
+  } else {
+    Serial.println("NORMAL (no LR flag)");
+  }
+
+  Serial.println("========================================");
+  Serial.println();
+}
+
 bool ESPNowEducation::parseMac(const String &text, uint8_t mac[6]) const {
   unsigned int values[6];
   int count = sscanf(text.c_str(), "%x:%x:%x:%x:%x:%x",

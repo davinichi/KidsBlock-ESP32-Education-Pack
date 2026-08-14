@@ -18,6 +18,8 @@ public:
   String senderMac() const;
   bool lastSendSucceeded() const;
   bool isReady() const;
+  uint8_t protocolBitmap() const;
+  void printProtocolInfo(uint32_t baud = 115200) const;
 
 private:
   static const size_t MAX_TEXT_BYTES = 240;

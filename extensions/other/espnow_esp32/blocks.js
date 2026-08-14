@@ -24,6 +24,16 @@ function addBlocks (Blockly) {
     }
   };
 
+  Blockly.Blocks.espnow_print_protocol_info = {
+    init: function () {
+      this.jsonInit({
+        message0: Blockly.Msg.ESPNOW_PRINT_PROTOCOL_INFO,
+        colour: color,
+        extensions: ['shape_statement']
+      });
+    }
+  };
+
   Blockly.Blocks.espnow_send_text = {
     init: function () {
       this.jsonInit({

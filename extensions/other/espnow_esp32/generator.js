@@ -14,6 +14,11 @@ function addGenerator (Blockly) {
     return `kbEspNow.begin(${longRange});\n`;
   };
 
+  Blockly.Arduino.espnow_print_protocol_info = function () {
+    addSupport();
+    return 'kbEspNow.printProtocolInfo();\n';
+  };
+
   Blockly.Arduino.espnow_send_text = function (block) {
     addSupport();
     const data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_NONE) || 'String("")';
