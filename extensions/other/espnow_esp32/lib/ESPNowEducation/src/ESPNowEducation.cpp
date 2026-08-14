@@ -7,6 +7,7 @@ ESPNowEducation::ESPNowEducation()
   : ready_(false),
     newData_(false),
     lastSendSuccess_(false),
+    lastRssi_(-127),
     mux_(portMUX_INITIALIZER_UNLOCKED) {
   receivedText_[0] = '\0';
   senderMac_[0] = '\0';
@@ -98,6 +99,15 @@ String ESPNowEducation::senderMac() const {
   portEXIT_CRITICAL(&mux_);
   copy[17] = '\0';
   return String(copy);
+}
+
+
+int ESPNowEducation::lastRssi() const {
+  int value;
+  portENTER_CRITICAL(&mux_);
+  value = lastRssi_;
+  portEXIT_CRITICAL(&mux_);
+  return value;
 }
 
 bool ESPNowEducation::lastSendSucceeded() const {
@@ -193,7 +203,7 @@ bool ESPNowEducation::ensurePeer(const uint8_t mac[6]) {
   return result == ESP_OK || result == ESP_ERR_ESPNOW_EXIST;
 }
 
-void ESPNowEducation::storeReceived(const uint8_t mac[6], const uint8_t *data, int len) {
+void ESPNowEducation::storeReceived(const uint8_t mac[6], const uint8_t *data, int len, int rssi) {
   if (!mac || !data || len < 0) return;
 
   size_t copyLength = static_cast<size_t>(len);
@@ -206,6 +216,7 @@ void ESPNowEducation::storeReceived(const uint8_t mac[6], const uint8_t *data, i
   memcpy(receivedText_, data, copyLength);
   receivedText_[copyLength] = '\0';
   memcpy(senderMac_, macText, sizeof(senderMac_));
+  lastRssi_ = rssi;
   newData_ = true;
   portEXIT_CRITICAL(&mux_);
 }
@@ -226,7 +237,11 @@ void ESPNowEducation::onReceiveStatic(const esp_now_recv_info_t *info,
                                       const uint8_t *data,
                                       int len) {
   if (instance_ && info) {
-    instance_->storeReceived(info->src_addr, data, len);
+    int rssi = -127;
+    if (info->rx_ctrl) {
+      rssi = info->rx_ctrl->rssi;
+    }
+    instance_->storeReceived(info->src_addr, data, len, rssi);
   }
 }
 #else
@@ -234,7 +249,8 @@ void ESPNowEducation::onReceiveStatic(const uint8_t *mac,
                                       const uint8_t *data,
                                       int len) {
   if (instance_) {
-    instance_->storeReceived(mac, data, len);
+    // ESP-IDF 4.x receive callback does not provide rx_ctrl/RSSI here.
+    instance_->storeReceived(mac, data, len, -127);
   }
 }
 #endif

@@ -1,0 +1,13 @@
+ESP-NOW RSSI experimental block
+
+New value block:
+  ESP-NOWで最後に受信したRSSI (dBm)
+
+The value is updated every time an ESP-NOW packet is received.
+On ESP-IDF 5.x it comes from esp_now_recv_info_t -> rx_ctrl -> rssi.
+Before the first packet is received the value is -127.
+On older ESP-IDF 4.x callbacks, RSSI is not available through this API and remains -127.
+
+Suggested OLED use:
+  DATA: <ESP-NOW received text>
+  RSSI: <last RSSI> dBm

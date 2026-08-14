@@ -36,6 +36,12 @@ function addGenerator (Blockly) {
     return ['kbEspNow.receivedText()', Blockly.Arduino.ORDER_ATOMIC];
   };
 
+
+  Blockly.Arduino.espnow_last_rssi = function () {
+    addSupport();
+    return ['kbEspNow.lastRssi()', Blockly.Arduino.ORDER_ATOMIC];
+  };
+
   Blockly.Arduino.espnow_sender_mac = function () {
     addSupport();
     return ['kbEspNow.senderMac()', Blockly.Arduino.ORDER_ATOMIC];

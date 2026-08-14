@@ -68,6 +68,17 @@ function addBlocks (Blockly) {
     }
   };
 
+
+  Blockly.Blocks.espnow_last_rssi = {
+    init: function () {
+      this.jsonInit({
+        message0: Blockly.Msg.ESPNOW_LAST_RSSI,
+        colour: color,
+        extensions: ['output_number']
+      });
+    }
+  };
+
   Blockly.Blocks.espnow_sender_mac = {
     init: function () {
       this.jsonInit({

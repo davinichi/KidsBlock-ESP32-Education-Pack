@@ -16,6 +16,7 @@ function addToolbox () {
   <sep gap="24"/>
   <block type="espnow_has_new_data" id="espnow_has_new_data"></block>
   <block type="espnow_received_text" id="espnow_received_text"></block>
+  <block type="espnow_last_rssi" id="espnow_last_rssi"></block>
   <block type="espnow_sender_mac" id="espnow_sender_mac"></block>
 </category>`;
 }
