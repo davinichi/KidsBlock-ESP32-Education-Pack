@@ -26,3 +26,14 @@ KidsBlock ESP32 Education Pack向けのESP-NOW文字列通信拡張です。
 - 比較実験では送信側・中継器・受信側を同じモードにしてください。
 - Long RangeはEspressif独自方式です。通常Wi-Fi機器との互換用途では使用しません。
 - この版は次期バージョン検討用の実験版で、v0.5への反映を意図していません。
+
+
+実験機能: ESP-NOW PHYレート指定
+- 「ESP-NOWのPHYレートを ... に設定する」ブロックを追加しました。
+- 選択肢: 1 Mbps (Normal) / 500 kbps (LR) / 250 kbps (LR)
+- 必ず「ESP-NOWを ... モードで始める」の後に置いてください。
+- Normal比較: 送信側 Normal開始 -> PHY 1 Mbps、受信側 Normal開始
+- LR 500k比較: 送信側 Long Range開始 -> PHY 500 kbps、受信側 Long Range開始
+- LR 250k比較: 送信側 Long Range開始 -> PHY 250 kbps、受信側 Long Range開始
+- PHYレートは主に送信側へ設定します。双方向通信なら両側へ設定してください。
+- 現行ESP32-WROOM環境での実験用です。

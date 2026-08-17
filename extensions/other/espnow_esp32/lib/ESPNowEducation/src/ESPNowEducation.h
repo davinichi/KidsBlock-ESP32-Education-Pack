@@ -17,6 +17,8 @@ public:
   String receivedText() const;
   String senderMac() const;
   int lastRssi() const;
+  bool setPhyRate(uint8_t mode);
+  bool lastPhyRateSetSucceeded() const;
   bool lastSendSucceeded() const;
   bool isReady() const;
   uint8_t protocolBitmap() const;
@@ -32,6 +34,8 @@ private:
   char receivedText_[MAX_TEXT_BYTES + 1];
   char senderMac_[18];
   volatile int lastRssi_;
+  volatile bool lastPhyRateSetSuccess_;
+  uint8_t phyRateMode_;
   mutable portMUX_TYPE mux_;
 
   bool parseMac(const String &text, uint8_t mac[6]) const;

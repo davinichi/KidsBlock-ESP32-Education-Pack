@@ -8,6 +8,8 @@ ESPNowEducation::ESPNowEducation()
     newData_(false),
     lastSendSuccess_(false),
     lastRssi_(-127),
+    lastPhyRateSetSuccess_(false),
+    phyRateMode_(0),
     mux_(portMUX_INITIALIZER_UNLOCKED) {
   receivedText_[0] = '\0';
   senderMac_[0] = '\0';
@@ -108,6 +110,50 @@ int ESPNowEducation::lastRssi() const {
   value = lastRssi_;
   portEXIT_CRITICAL(&mux_);
   return value;
+}
+
+
+bool ESPNowEducation::setPhyRate(uint8_t mode) {
+  if (!ready_) {
+    lastPhyRateSetSuccess_ = false;
+    return false;
+  }
+
+  wifi_phy_rate_t rate;
+  switch (mode) {
+    case 0:
+      rate = WIFI_PHY_RATE_1M_L;
+      break;
+    case 1:
+      rate = WIFI_PHY_RATE_LORA_500K;
+      break;
+    case 2:
+      rate = WIFI_PHY_RATE_LORA_250K;
+      break;
+    default:
+      lastPhyRateSetSuccess_ = false;
+      return false;
+  }
+
+#if ESP_IDF_VERSION_MAJOR < 6
+  // Interface-wide ESP-NOW TX rate. This is convenient for experimental
+  // broadcast/unicast comparison on the current ESP32 Education Pack.
+  esp_err_t result = esp_wifi_config_espnow_rate(WIFI_IF_STA, rate);
+  lastPhyRateSetSuccess_ = (result == ESP_OK);
+#else
+  // ESP-IDF 6 removed esp_wifi_config_espnow_rate().
+  // This experimental Education Pack targets the current ESP32-WROOM toolchain.
+  lastPhyRateSetSuccess_ = false;
+#endif
+
+  if (lastPhyRateSetSuccess_) {
+    phyRateMode_ = mode;
+  }
+  return lastPhyRateSetSuccess_;
+}
+
+bool ESPNowEducation::lastPhyRateSetSucceeded() const {
+  return lastPhyRateSetSuccess_;
 }
 
 bool ESPNowEducation::lastSendSucceeded() const {

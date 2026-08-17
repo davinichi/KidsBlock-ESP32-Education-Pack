@@ -1,0 +1,26 @@
+ESP-NOW PHY RATE EXPERIMENT
+
+目的:
+Long Rangeプロトコルの有効化だけでなく、ESP-NOW送信PHYレートを明示して距離・RSSI・受信率を比較する。
+
+推奨3条件:
+1) Normal / 1 Mbps
+   TX: ESP-NOW Normal開始 -> PHY 1 Mbps
+   RX: ESP-NOW Normal開始
+
+2) Long Range / 500 kbps
+   TX: ESP-NOW Long Range開始 -> PHY 500 kbps (LR)
+   RX: ESP-NOW Long Range開始
+
+3) Long Range / 250 kbps
+   TX: ESP-NOW Long Range開始 -> PHY 250 kbps (LR)
+   RX: ESP-NOW Long Range開始
+
+記録推奨:
+距離 / RSSI / 送信数 / 受信数 / 受信率 / 欠損数
+
+注意:
+- PHYレート設定ブロックはESP-NOW開始ブロックの後に置く。
+- 受信だけの端末ではPHY TXレート指定は不要。
+- 双方向通信なら両端末で同様に設定する。
+- この版は次期版検討用の実験版で、v0.5へ反映するものではない。

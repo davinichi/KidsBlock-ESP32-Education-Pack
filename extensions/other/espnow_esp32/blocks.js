@@ -34,6 +34,37 @@ function addBlocks (Blockly) {
     }
   };
 
+  Blockly.Blocks.espnow_set_phy_rate = {
+    init: function () {
+      this.jsonInit({
+        message0: Blockly.Msg.ESPNOW_SET_PHY_RATE,
+        args0: [
+          {
+            type: 'field_dropdown',
+            name: 'RATE',
+            options: [
+              [Blockly.Msg.ESPNOW_PHY_RATE_1M, 'RATE_1M'],
+              [Blockly.Msg.ESPNOW_PHY_RATE_LR_500K, 'RATE_LR_500K'],
+              [Blockly.Msg.ESPNOW_PHY_RATE_LR_250K, 'RATE_LR_250K']
+            ]
+          }
+        ],
+        colour: color,
+        extensions: ['shape_statement']
+      });
+    }
+  };
+
+  Blockly.Blocks.espnow_phy_rate_set_success = {
+    init: function () {
+      this.jsonInit({
+        message0: Blockly.Msg.ESPNOW_PHY_RATE_SET_SUCCESS,
+        colour: color,
+        extensions: ['output_boolean']
+      });
+    }
+  };
+
   Blockly.Blocks.espnow_send_text = {
     init: function () {
       this.jsonInit({
