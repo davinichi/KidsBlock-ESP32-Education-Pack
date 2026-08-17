@@ -20,6 +20,13 @@ function addGenerator (Blockly) {
     return [`calcSimpleWBGT(${temp}, ${humidity})`, Blockly.Arduino.ORDER_ATOMIC];
   };
 
+  Blockly.Arduino.environment_absolute_humidity = function (block) {
+    addLibrary();
+    const temp = Blockly.Arduino.valueToCode(block, 'TEMP', Blockly.Arduino.ORDER_NONE) || '0';
+    const humidity = Blockly.Arduino.valueToCode(block, 'HUMIDITY', Blockly.Arduino.ORDER_NONE) || '0';
+    return [`calcAbsoluteHumidity(${temp}, ${humidity})`, Blockly.Arduino.ORDER_ATOMIC];
+  };
+
   Blockly.Arduino.environment_wbgt_level = function (block) {
     addLibrary();
     const wbgt = Blockly.Arduino.valueToCode(block, 'WBGT', Blockly.Arduino.ORDER_NONE) || '0';

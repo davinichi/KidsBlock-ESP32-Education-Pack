@@ -5,6 +5,7 @@ function addMsg (Blockly) {
     ENVIRONMENT_CATEGORY: 'Environment',
     ENVIRONMENT_WET_BULB: 'wet-bulb temperature: temperature %1 °C humidity %2 %%',
     ENVIRONMENT_SIMPLE_WBGT: 'simple WBGT: temperature %1 °C humidity %2 %%',
+    ENVIRONMENT_ABSOLUTE_HUMIDITY: 'absolute humidity: temperature %1 °C humidity %2 %% (g/m³)',
     ENVIRONMENT_WBGT_LEVEL: 'warning level number for WBGT %1',
     ENVIRONMENT_WBGT_LEVEL_TEXT: 'warning level text for WBGT %1'
   });
@@ -13,6 +14,7 @@ function addMsg (Blockly) {
     ENVIRONMENT_CATEGORY: '環境計算',
     ENVIRONMENT_WET_BULB: '温度 %1 ℃ 湿度 %2 ％ の湿球温度',
     ENVIRONMENT_SIMPLE_WBGT: '温度 %1 ℃ 湿度 %2 ％ のWBGT',
+    ENVIRONMENT_ABSOLUTE_HUMIDITY: '温度 %1 ℃ 湿度 %2 ％ の絶対湿度 (g/m³)',
     ENVIRONMENT_WBGT_LEVEL: 'WBGT %1 の警戒レベル番号',
     ENVIRONMENT_WBGT_LEVEL_TEXT: 'WBGT %1 の警戒レベル'
   });
@@ -21,6 +23,7 @@ function addMsg (Blockly) {
     ENVIRONMENT_CATEGORY: '环境计算',
     ENVIRONMENT_WET_BULB: '温度 %1 ℃ 湿度 %2 %% 的湿球温度',
     ENVIRONMENT_SIMPLE_WBGT: '温度 %1 ℃ 湿度 %2 %% 的WBGT',
+    ENVIRONMENT_ABSOLUTE_HUMIDITY: '温度 %1 ℃ 湿度 %2 %% 的绝对湿度 (g/m³)',
     ENVIRONMENT_WBGT_LEVEL: 'WBGT %1 的警戒等级编号',
     ENVIRONMENT_WBGT_LEVEL_TEXT: 'WBGT %1 的警戒等级'
   });

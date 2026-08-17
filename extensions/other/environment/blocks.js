@@ -32,6 +32,20 @@ function addBlocks (Blockly) {
     }
   };
 
+  Blockly.Blocks.environment_absolute_humidity = {
+    init: function () {
+      this.jsonInit({
+        message0: Blockly.Msg.ENVIRONMENT_ABSOLUTE_HUMIDITY,
+        args0: [
+          {type: 'input_value', name: 'TEMP'},
+          {type: 'input_value', name: 'HUMIDITY'}
+        ],
+        colour: color,
+        extensions: ['output_number']
+      });
+    }
+  };
+
   Blockly.Blocks.environment_wbgt_level = {
     init: function () {
       this.jsonInit({

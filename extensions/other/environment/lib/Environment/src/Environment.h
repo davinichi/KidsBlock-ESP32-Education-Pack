@@ -5,6 +5,7 @@
 
 float wetBulbTemperature(float tempC, float humidity);
 float calcSimpleWBGT(float tempC, float humidity);
+float calcAbsoluteHumidity(float tempC, float humidity);
 
 inline int wbgtLevel(float wbgt) {
   if (wbgt >= 31.0f) return 4;
