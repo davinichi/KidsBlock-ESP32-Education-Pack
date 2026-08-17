@@ -5,7 +5,7 @@ const Environment = formatMessage => ({
     description: 'Environmental calculation blocks'
   }),
   extensionId: 'Environment',
-  version: '1.3.0',
+  version: '1.4.0',
   type: 'arduino',
   supportDevice: [
     'arduinoUno',
@@ -18,7 +18,7 @@ const Environment = formatMessage => ({
   iconURL: 'asset/environment.svg',
   description: formatMessage({
     id: 'Environment.description',
-    default: 'Wet-bulb temperature, simple WBGT, absolute humidity, and warning-level calculations',
+    default: 'Environmental calculations plus LCD1602 unit display blocks for temperature and absolute humidity',
     description: 'Description of Environment extension'
   }),
   featured: true,
