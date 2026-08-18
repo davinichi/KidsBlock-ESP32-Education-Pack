@@ -72,6 +72,17 @@ function addBlocks (Blockly) {
     }
   };
 
+  Blockly.Blocks.environment_lcd1602_register_symbols = {
+    init: function () {
+      this.jsonInit({
+        message0: Blockly.Msg.ENVIRONMENT_LCD1602_REGISTER_SYMBOLS,
+        colour: color,
+        previousStatement: null,
+        nextStatement: null
+      });
+    }
+  };
+
   Blockly.Blocks.environment_lcd1602_symbol_degree_c = {
     init: function () {
       this.jsonInit({
