@@ -6,7 +6,7 @@ const esp32bme280 = formatMessage => ({
     extensionId: 'esp32bme280',
     version: '1.0.0',
     supportDevice: ['arduinoEsp32', 'arduinoEsp32S3'],
-    author: 'OpenAI / user project',
+    author: 'davinichi',
     iconURL: `asset/bme280.svg`,
     description: formatMessage({
         id: 'esp32bme280.description',
