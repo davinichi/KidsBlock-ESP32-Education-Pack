@@ -16,14 +16,8 @@ function addToolbox () {
         <value name="HUMIDITY"><shadow type="math_number"><field name="NUM">60</field></shadow></value>
       </block>
       <sep gap="24"/>
-      <block type="environment_lcd1602_temperature">
-        <value name="VALUE"><shadow type="math_number"><field name="NUM">25.0</field></shadow></value>
-        <value name="COL"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
-      </block>
-      <block type="environment_lcd1602_absolute_humidity">
-        <value name="VALUE"><shadow type="math_number"><field name="NUM">11.5</field></shadow></value>
-        <value name="COL"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
-      </block>
+      <block type="environment_lcd1602_symbol_degree_c"/>
+      <block type="environment_lcd1602_symbol_gm3"/>
       <sep gap="24"/>
     </category>`;
 }
