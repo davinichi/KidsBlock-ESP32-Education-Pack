@@ -5,7 +5,7 @@ const Environment = formatMessage => ({
     description: 'Environmental calculation blocks'
   }),
   extensionId: 'Environment',
-  version: '1.4.0',
+  version: '1.4.1',
   type: 'arduino',
   supportDevice: [
     'arduinoUno',

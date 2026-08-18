@@ -22,7 +22,7 @@ function addGenerator (Blockly) {
     Blockly.Arduino.definitions_.environment_lcd1602_char_gm_left = `uint8_t environmentCharGmLeft[8] = {\n  0b01110,\n  0b10000,\n  0b10110,\n  0b10010,\n  0b01110,\n  0b00010,\n  0b01100,\n  0b00001\n};`;
     Blockly.Arduino.definitions_.environment_lcd1602_char_gm_right = `uint8_t environmentCharGmRight[8] = {\n  0b10000,\n  0b01011,\n  0b00101,\n  0b10111,\n  0b11101,\n  0b10111,\n  0b10101,\n  0b10111\n};`;
 
-    Blockly.Arduino.setups_[`environment_lcd1602_setup_${suffix}`] = `${lcdName}.init();\n${lcdName}.backlight();\n${lcdName}.createChar(0, environmentCharDegC);\n${lcdName}.createChar(1, environmentCharGmLeft);\n${lcdName}.createChar(2, environmentCharGmRight);`;
+    Blockly.Arduino.setups_[`environment_lcd1602_setup_${suffix}`] = `${lcdName}.begin();\n${lcdName}.backlight();\n${lcdName}.createChar(0, environmentCharDegC);\n${lcdName}.createChar(1, environmentCharGmLeft);\n${lcdName}.createChar(2, environmentCharGmRight);`;
 
     return lcdName;
   };
