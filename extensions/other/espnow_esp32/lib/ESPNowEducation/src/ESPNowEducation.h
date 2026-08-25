@@ -10,14 +10,19 @@ class ESPNowEducation {
 public:
   ESPNowEducation();
 
-  bool begin();
+  bool begin(bool longRange = false);
   bool send(const String &message, const String &destinationMac = "");
 
   bool hasNewData();
   String receivedText() const;
   String senderMac() const;
+  int lastRssi() const;
+  bool setPhyRate(uint8_t mode);
+  bool lastPhyRateSetSucceeded() const;
   bool lastSendSucceeded() const;
   bool isReady() const;
+  uint8_t protocolBitmap() const;
+  void printProtocolInfo(uint32_t baud = 115200) const;
 
 private:
   static const size_t MAX_TEXT_BYTES = 240;
@@ -28,11 +33,14 @@ private:
   volatile bool lastSendSuccess_;
   char receivedText_[MAX_TEXT_BYTES + 1];
   char senderMac_[18];
+  volatile int lastRssi_;
+  volatile bool lastPhyRateSetSuccess_;
+  uint8_t phyRateMode_;
   mutable portMUX_TYPE mux_;
 
   bool parseMac(const String &text, uint8_t mac[6]) const;
   bool ensurePeer(const uint8_t mac[6]);
-  void storeReceived(const uint8_t mac[6], const uint8_t *data, int len);
+  void storeReceived(const uint8_t mac[6], const uint8_t *data, int len, int rssi = -127);
   static void formatMac(const uint8_t mac[6], char out[18]);
 
   static void onSendStatic(const uint8_t *mac, esp_now_send_status_t status);

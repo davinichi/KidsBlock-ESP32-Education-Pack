@@ -7,9 +7,30 @@ function addGenerator (Blockly) {
     Blockly.Arduino.definitions_.espnow_education_object = 'ESPNowEducation kbEspNow;';
   }
 
-  Blockly.Arduino.espnow_begin = function () {
+  Blockly.Arduino.espnow_begin = function (block) {
     addSupport();
-    return 'kbEspNow.begin();\n';
+    const mode = block.getFieldValue('MODE') || 'NORMAL';
+    const longRange = mode === 'LONG_RANGE' ? 'true' : 'false';
+    return `kbEspNow.begin(${longRange});\n`;
+  };
+
+  Blockly.Arduino.espnow_print_protocol_info = function () {
+    addSupport();
+    return 'kbEspNow.printProtocolInfo();\n';
+  };
+
+  Blockly.Arduino.espnow_set_phy_rate = function (block) {
+    addSupport();
+    const rate = block.getFieldValue('RATE') || 'RATE_1M';
+    let mode = 0;
+    if (rate === 'RATE_LR_500K') mode = 1;
+    if (rate === 'RATE_LR_250K') mode = 2;
+    return `kbEspNow.setPhyRate(${mode});\n`;
+  };
+
+  Blockly.Arduino.espnow_phy_rate_set_success = function () {
+    addSupport();
+    return ['kbEspNow.lastPhyRateSetSucceeded()', Blockly.Arduino.ORDER_ATOMIC];
   };
 
   Blockly.Arduino.espnow_send_text = function (block) {
@@ -27,6 +48,12 @@ function addGenerator (Blockly) {
   Blockly.Arduino.espnow_received_text = function () {
     addSupport();
     return ['kbEspNow.receivedText()', Blockly.Arduino.ORDER_ATOMIC];
+  };
+
+
+  Blockly.Arduino.espnow_last_rssi = function () {
+    addSupport();
+    return ['kbEspNow.lastRssi()', Blockly.Arduino.ORDER_ATOMIC];
   };
 
   Blockly.Arduino.espnow_sender_mac = function () {

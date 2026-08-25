@@ -7,16 +7,31 @@ ESPNowEducation::ESPNowEducation()
   : ready_(false),
     newData_(false),
     lastSendSuccess_(false),
+    lastRssi_(-127),
+    lastPhyRateSetSuccess_(false),
+    phyRateMode_(0),
     mux_(portMUX_INITIALIZER_UNLOCKED) {
   receivedText_[0] = '\0';
   senderMac_[0] = '\0';
 }
 
-bool ESPNowEducation::begin() {
+bool ESPNowEducation::begin(bool longRange) {
   if (ready_) return true;
 
   WiFi.mode(WIFI_STA);
   delay(20);
+
+  // Select the Wi-Fi protocol before ESP-NOW is initialized.
+  // NORMAL: standard 802.11 b/g/n
+  // LONG RANGE: Espressif proprietary LR mode
+  uint8_t protocol = longRange
+      ? WIFI_PROTOCOL_LR
+      : (WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G | WIFI_PROTOCOL_11N);
+
+  if (esp_wifi_set_protocol(WIFI_IF_STA, protocol) != ESP_OK) {
+    ready_ = false;
+    return false;
+  }
 
   if (esp_now_init() != ESP_OK) {
     ready_ = false;
@@ -88,12 +103,118 @@ String ESPNowEducation::senderMac() const {
   return String(copy);
 }
 
+
+int ESPNowEducation::lastRssi() const {
+  int value;
+  portENTER_CRITICAL(&mux_);
+  value = lastRssi_;
+  portEXIT_CRITICAL(&mux_);
+  return value;
+}
+
+
+bool ESPNowEducation::setPhyRate(uint8_t mode) {
+  if (!ready_) {
+    lastPhyRateSetSuccess_ = false;
+    return false;
+  }
+
+  wifi_phy_rate_t rate;
+  switch (mode) {
+    case 0:
+      rate = WIFI_PHY_RATE_1M_L;
+      break;
+    case 1:
+      rate = WIFI_PHY_RATE_LORA_500K;
+      break;
+    case 2:
+      rate = WIFI_PHY_RATE_LORA_250K;
+      break;
+    default:
+      lastPhyRateSetSuccess_ = false;
+      return false;
+  }
+
+#if ESP_IDF_VERSION_MAJOR < 6
+  // Interface-wide ESP-NOW TX rate. This is convenient for experimental
+  // broadcast/unicast comparison on the current ESP32 Education Pack.
+  esp_err_t result = esp_wifi_config_espnow_rate(WIFI_IF_STA, rate);
+  lastPhyRateSetSuccess_ = (result == ESP_OK);
+#else
+  // ESP-IDF 6 removed esp_wifi_config_espnow_rate().
+  // This experimental Education Pack targets the current ESP32-WROOM toolchain.
+  lastPhyRateSetSuccess_ = false;
+#endif
+
+  if (lastPhyRateSetSuccess_) {
+    phyRateMode_ = mode;
+  }
+  return lastPhyRateSetSuccess_;
+}
+
+bool ESPNowEducation::lastPhyRateSetSucceeded() const {
+  return lastPhyRateSetSuccess_;
+}
+
 bool ESPNowEducation::lastSendSucceeded() const {
   return lastSendSuccess_;
 }
 
 bool ESPNowEducation::isReady() const {
   return ready_;
+}
+
+uint8_t ESPNowEducation::protocolBitmap() const {
+  uint8_t protocol = 0;
+  if (esp_wifi_get_protocol(WIFI_IF_STA, &protocol) != ESP_OK) {
+    return 0;
+  }
+  return protocol;
+}
+
+void ESPNowEducation::printProtocolInfo(uint32_t baud) const {
+  Serial.begin(baud);
+  delay(100);
+
+  uint8_t protocol = 0;
+  esp_err_t result = esp_wifi_get_protocol(WIFI_IF_STA, &protocol);
+
+  Serial.println();
+  Serial.println("========================================");
+  Serial.println(" ESP-NOW Wi-Fi Protocol Diagnostic");
+  Serial.println("========================================");
+
+  if (result != ESP_OK) {
+    Serial.print("esp_wifi_get_protocol failed: ");
+    Serial.println((int)result);
+    Serial.println("========================================");
+    return;
+  }
+
+  Serial.print("Protocol bitmap : 0x");
+  if (protocol < 0x10) Serial.print('0');
+  Serial.println(protocol, HEX);
+
+  Serial.print("802.11b         : ");
+  Serial.println((protocol & WIFI_PROTOCOL_11B) ? "ON" : "OFF");
+  Serial.print("802.11g         : ");
+  Serial.println((protocol & WIFI_PROTOCOL_11G) ? "ON" : "OFF");
+  Serial.print("802.11n         : ");
+  Serial.println((protocol & WIFI_PROTOCOL_11N) ? "ON" : "OFF");
+  Serial.print("Long Range (LR) : ");
+  Serial.println((protocol & WIFI_PROTOCOL_LR) ? "ON" : "OFF");
+
+  Serial.print("Detected mode   : ");
+  if (protocol == WIFI_PROTOCOL_LR) {
+    Serial.println("LR ONLY");
+  } else if ((protocol & WIFI_PROTOCOL_LR) != 0) {
+    Serial.println("NORMAL + LR (mixed)");
+  } else {
+    Serial.println("NORMAL (no LR flag)");
+  }
+
+  Serial.println("========================================");
+  Serial.println();
 }
 
 bool ESPNowEducation::parseMac(const String &text, uint8_t mac[6]) const {
@@ -128,7 +249,7 @@ bool ESPNowEducation::ensurePeer(const uint8_t mac[6]) {
   return result == ESP_OK || result == ESP_ERR_ESPNOW_EXIST;
 }
 
-void ESPNowEducation::storeReceived(const uint8_t mac[6], const uint8_t *data, int len) {
+void ESPNowEducation::storeReceived(const uint8_t mac[6], const uint8_t *data, int len, int rssi) {
   if (!mac || !data || len < 0) return;
 
   size_t copyLength = static_cast<size_t>(len);
@@ -141,6 +262,7 @@ void ESPNowEducation::storeReceived(const uint8_t mac[6], const uint8_t *data, i
   memcpy(receivedText_, data, copyLength);
   receivedText_[copyLength] = '\0';
   memcpy(senderMac_, macText, sizeof(senderMac_));
+  lastRssi_ = rssi;
   newData_ = true;
   portEXIT_CRITICAL(&mux_);
 }
@@ -161,7 +283,11 @@ void ESPNowEducation::onReceiveStatic(const esp_now_recv_info_t *info,
                                       const uint8_t *data,
                                       int len) {
   if (instance_ && info) {
-    instance_->storeReceived(info->src_addr, data, len);
+    int rssi = -127;
+    if (info->rx_ctrl) {
+      rssi = info->rx_ctrl->rssi;
+    }
+    instance_->storeReceived(info->src_addr, data, len, rssi);
   }
 }
 #else
@@ -169,7 +295,8 @@ void ESPNowEducation::onReceiveStatic(const uint8_t *mac,
                                       const uint8_t *data,
                                       int len) {
   if (instance_) {
-    instance_->storeReceived(mac, data, len);
+    // ESP-IDF 4.x receive callback does not provide rx_ctrl/RSSI here.
+    instance_->storeReceived(mac, data, len, -127);
   }
 }
 #endif
