@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect x="6" y="14" width="68" height="52" rx="6" fill="#5C8DFF"/>
+  <rect x="12" y="22" width="56" height="30" rx="2" fill="#FFFFFF"/>
+  <text x="40" y="43" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1F3D7A">℃</text>
+  <circle cx="18" cy="59" r="2" fill="#FFFFFF"/>
+  <circle cx="26" cy="59" r="2" fill="#FFFFFF"/>
+</svg>
