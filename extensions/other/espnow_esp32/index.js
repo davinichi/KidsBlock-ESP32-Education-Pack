@@ -5,10 +5,10 @@ const espnow_esp32 = formatMessage => ({
         description: 'ESP-NOW ESP32'
     }),
     extensionId: 'espnow_esp32',
-    version: '1.2.0-experimental-phy-rate',
+    version: '1.2.0',
     type: 'arduino',
     supportDevice: ['arduinoEsp32', 'arduinoEsp32S3'],
-    author: 'Davinichi',
+    author: 'davinichi',
     iconURL: `asset/espnow_esp32.svg`,
     description: formatMessage({
         id: 'espnow_esp32.description',
