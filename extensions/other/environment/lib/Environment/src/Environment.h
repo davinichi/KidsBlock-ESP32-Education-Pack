@@ -3,9 +3,30 @@
 
 #include <Arduino.h>
 
+enum EnvironmentIndexType {
+  ENV_INDEX_DI = 0,
+  ENV_INDEX_HEAT_INDEX,
+  ENV_INDEX_HUMIDEX,
+  ENV_INDEX_DEW_POINT,
+  ENV_INDEX_ABSOLUTE_HUMIDITY,
+  ENV_INDEX_WET_BULB,
+  ENV_INDEX_VPD,
+  ENV_INDEX_VAPOR_PRESSURE,
+  ENV_INDEX_THI,
+  ENV_INDEX_ESTIMATED_WBGT
+};
+
+float calcEnvironmentIndex(EnvironmentIndexType type, float tempC, float humidity);
+float discomfortIndex(float tempC, float humidity);
+float heatIndexC(float tempC, float humidity);
+float humidex(float tempC, float humidity);
+float dewPointTemperature(float tempC, float humidity);
 float wetBulbTemperature(float tempC, float humidity);
 float calcSimpleWBGT(float tempC, float humidity);
 float calcAbsoluteHumidity(float tempC, float humidity);
+float vaporPressureKPa(float tempC, float humidity);
+float vaporPressureDeficitKPa(float tempC, float humidity);
+float temperatureHumidityIndex(float tempC, float humidity);
 
 inline int wbgtLevel(float wbgt) {
   if (wbgt >= 31.0f) return 4;

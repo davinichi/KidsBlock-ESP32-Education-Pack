@@ -1,0 +1,4 @@
+KidsBlock ESP32 Education Pack v0.6 Preview
+Environment v1.7.0
+Author: davinichi
+Feature: 10 environmental indices selectable from one dropdown block.

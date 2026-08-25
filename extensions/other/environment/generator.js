@@ -7,9 +7,6 @@ function addGenerator (Blockly) {
   };
 
   const addLcdSymbolData = function () {
-    // The standard KidsBlock LCD1602 extension owns the lcd object,
-    // I2C address, lcd.begin(), backlight() and cursor positioning.
-    // Environment only defines CGRAM bitmap data.
     Blockly.Arduino.definitions_.environment_lcd1602_symbol_data = `uint8_t environmentCharDegC[8] = {
   0b01000,
   0b10100,
@@ -40,6 +37,14 @@ uint8_t environmentCharGmRight[8] = {
   0b00000,
   0b00000
 };`;
+  };
+
+  Blockly.Arduino.environment_index = function (block) {
+    addLibrary();
+    const index = block.getFieldValue('INDEX') || 'ENV_INDEX_DI';
+    const temp = Blockly.Arduino.valueToCode(block, 'TEMP', Blockly.Arduino.ORDER_NONE) || '0';
+    const humidity = Blockly.Arduino.valueToCode(block, 'HUMIDITY', Blockly.Arduino.ORDER_NONE) || '0';
+    return [`calcEnvironmentIndex(${index}, ${temp}, ${humidity})`, Blockly.Arduino.ORDER_ATOMIC];
   };
 
   Blockly.Arduino.environment_wet_bulb = function (block) {
@@ -75,15 +80,11 @@ uint8_t environmentCharGmRight[8] = {
     return [`wbgtLevelText(${wbgt})`, Blockly.Arduino.ORDER_ATOMIC];
   };
 
-  // Command block: the user places this once AFTER the standard LCD1602
-  // initialization block. createChar() must run after lcd.begin().
   Blockly.Arduino.environment_lcd1602_register_symbols = function () {
     addLcdSymbolData();
     return `lcd.createChar(5, environmentCharDegC);\nlcd.createChar(6, environmentCharGmLeft);\nlcd.createChar(7, environmentCharGmRight);\n`;
   };
 
-  // Data blocks only return character codes. They intentionally do NOT
-  // initialize the LCD or register CGRAM data.
   Blockly.Arduino.environment_lcd1602_symbol_degree_c = function () {
     return ['String((char)5)', Blockly.Arduino.ORDER_FUNCTION_CALL];
   };
