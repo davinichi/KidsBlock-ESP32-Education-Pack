@@ -1,6 +1,6 @@
 # Installation
 
-## KidsBlock ESP32 Education Pack Version 0.5 Preview
+## KidsBlock ESP32 Education Pack Version 0.6 Preview
 
 1. Close KidsBlock.
 2. Extract the distribution ZIP.
@@ -9,7 +9,7 @@
 
 ```text
 Installation completed successfully.
-Installed 10 extensions.
+Installed 12 extensions.
 Version: 0.5-Preview
 ```
 
@@ -21,6 +21,6 @@ The primary installation location is:
 %APPDATA%\KidsBlock\Data\external-resources\extensions\arduino\other
 ```
 
-Restart KidsBlock and confirm that all ten extensions are available.
+Restart KidsBlock and confirm that all twelve extensions are available.
 
 For detailed Japanese instructions and troubleshooting, see `INSTALL_JA.md`.

@@ -1,6 +1,6 @@
 # KidsBlock ESP32 Education Pack
 
-## Version 0.5 Preview
+## Version 0.6 Preview
 
 **ESP32プログラミング教育のための統合開発パッケージ**
 
@@ -50,7 +50,7 @@ KidsBlock ESP32 Education Pack は、ESP32を利用したプログラミング�
 - NTP時計
 - ESP32システム情報表示
 
-## 収録ライブラリ（10種類）
+## 収録ライブラリ（12種類）
 
 ### Communication
 
@@ -62,11 +62,23 @@ KidsBlock ESP32 Education Pack は、ESP32を利用したプログラミング�
 | BLE UART 3 | BLEによる文字列通信 |
 | ESP-NOW ESP32 | ESP32間のブロードキャスト・個別通信 |
 
+### Sensor
+
+| ライブラリ | 概要 |
+|---|---|
+| BME280 | I2C接続で温度・湿度・気圧を取得 |
+
+### Display
+
+| ライブラリ | 概要 |
+|---|---|
+| LCD1602 Symbols | LCD1602用の特殊記号を共通利用 |
+
 ### Other
 
 | ライブラリ | 概要 |
 |---|---|
-| Environment | 湿球温度、簡易WBGT、警戒レベルなどの環境計算 |
+| Environment | 10種類の環境指数、湿球温度、推定WBGTなどの環境計算 |
 | NTP Clock | NTPサーバーから日時を取得 |
 | KBSD ESP32 | microSDカードの検査、読み書き、行単位読込 |
 | Data Processing | CSV分解、文字列結合、部分文字列などのデータ処理 |
@@ -92,7 +104,7 @@ KidsBlock ESP32 Education Pack は、ESP32を利用したプログラミング�
 - `INSTALL_JA.md`：インストールと更新
 - `LIBRARIES_JA.md`：各ライブラリの概要
 - `EXAMPLES_JA.md`：教材例
-- `RELEASE_NOTES.md`：v0.5 Previewの更新内容
+- `RELEASE_NOTES.md`：v0.6 Previewの更新内容
 - `CHANGELOG.md`：変更履歴
 - `CONTENTS.md`：収録ファイル
 - `LICENSE_JA.md`：Preview版ライセンス
@@ -109,7 +121,7 @@ KidsBlock ESP32 Education Pack は、ESP32を利用したプログラミング�
 
 ## Preview版・ライセンス・免責事項
 
-Version 0.5 Previewは、Version 1.0公開前の評価・実証用プレリリースです。
+Version 0.6 Previewは、Version 1.0公開前の評価・実証用プレリリースです。
 
 十分な確認を行っていますが、すべてのPC、KidsBlock、ESP32、周辺機器、ネットワーク環境で正常に動作することを保証するものではありません。
 
@@ -118,11 +130,11 @@ Version 0.5 Previewは、Version 1.0公開前の評価・実証用プレリリ�
 インストールを続行した場合、[LICENSE_JA.md](LICENSE_JA.md)の利用条件と免責事項に同意したものとみなされます。同意できない場合は、インストールおよび利用を中止してください。
 
 
-## Version 0.5 Previewについて
+## Version 0.6 Previewについて
 
-Version 0.5 Previewは、Version 1.0公開前の最終プレリリースです。
+Version 0.6 Previewは、Version 1.0に向けて複数のテスターによる評価・実証を進めるPreview版です。
 
-Version 1.0までは新機能の追加を原則として行わず、次の内容を優先します。
+Version 1.0に向けて、次の内容を優先して評価・改善します。
 
 - インストールの確実性
 - 実機での動作確認

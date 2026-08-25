@@ -1,6 +1,6 @@
 # ライブラリガイド
 
-## KidsBlock ESP32 Education Pack Version 0.5 Preview
+## KidsBlock ESP32 Education Pack Version 0.6 Preview
 
 ## Communication
 
@@ -38,13 +38,25 @@ Wi-Fiルーターを使わずにESP32同士で文字列を送受信します。
 - 受信文字列と送信元MACアドレスを取得
 - 新規受信と送信結果を条件判定
 
-初版はESP-NOW単独利用を基本としています。
+Normal / Long Rangeモードの切替、PHYレート設定、最後に受信したRSSIの取得に対応します。Long Range機能はPreview版で継続評価中です。
+
+## Sensor
+
+### BME280
+
+BME280から温度・湿度・気圧を取得します。I2C接続の環境センサー教材に利用できます。
+
+## Display
+
+### LCD1602 Symbols
+
+LCD1602で使用する特殊記号を登録・表示するための拡張です。環境計算から独立させ、他の教材でも再利用できる構成にしています。
 
 ## Other
 
 ### Environment
 
-温度・湿度から湿球温度、簡易WBGT、警戒レベルなどを計算します。
+温度・湿度から10種類の環境指数を選択して計算できます。既存プロジェクトとの整合性のため、湿球温度と推定WBGTの個別ブロックも保持しています。
 
 ### NTP Clock
 

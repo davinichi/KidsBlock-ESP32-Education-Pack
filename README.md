@@ -1,6 +1,6 @@
 # KidsBlock ESP32 Education Pack
 
-## Version 0.5 Preview
+## Version 0.6 Preview
 
 **An integrated development package for ESP32 programming education**
 
@@ -17,6 +17,14 @@ The blocks generate Arduino C++ code and are designed to support a gradual trans
 - ThingSpeak
 - BLE UART 3
 - ESP-NOW ESP32
+
+### Sensor
+
+- BME280
+
+### Display
+
+- LCD1602 Symbols
 
 ### Other
 
@@ -39,10 +47,10 @@ See `INSTALL.md`. Japanese users should see `INSTALL_JA.md`.
 
 ## License
 
-This package is provided free of charge for educational use under the KidsBlock ESP32 Education Pack Preview License Version 0.5. Sale of the package itself and paid redistribution without permission are not allowed. Third-party components remain subject to their own licenses.
+This package is provided free of charge for educational use under the KidsBlock ESP32 Education Pack Preview License Version 0.6. Sale of the package itself and paid redistribution without permission are not allowed. Third-party components remain subject to their own licenses.
 
 See `LICENSE_JA.md` for the current Japanese preview-license text.
 
 ## Release status
 
-Version 0.5 Preview is the final pre-release before Version 1.0. Development is currently focused on stability, documentation, installation reliability, and field testing.
+Version 0.6 Preview expands field testing with BME280 support, environmental-index selection, LCD1602 Symbols, and experimental ESP-NOW Normal/Long Range and PHY-rate features. Feedback from multiple testers will be used toward Version 1.0.

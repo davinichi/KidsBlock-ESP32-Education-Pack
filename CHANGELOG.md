@@ -2,7 +2,7 @@
 
 All notable changes to KidsBlock ESP32 Education Pack are documented here.
 
-## v0.5 Preview — 2026-08
+## v0.6 Preview — 2026-08
 
 ### Added
 
@@ -18,7 +18,7 @@ All notable changes to KidsBlock ESP32 Education Pack are documented here.
 - Improved browser rendering and conditional section display
 - Updated installer for ten extensions
 - Added automatic manifest generation and ZIP verification to the release process
-- Standardized documentation on Version 0.5 Preview and ten extensions
+- Standardized documentation on Version 0.6 Preview and ten extensions
 
 ### Fixed
 

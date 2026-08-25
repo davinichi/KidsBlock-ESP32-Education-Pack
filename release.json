@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "pack": {
     "name": "KidsBlock ESP32 Education Pack",
-    "version": "0.5-Preview",
-    "releaseDate": "2026-08-04",
+    "version": "0.6-Preview",
+    "releaseDate": "2026-08-25",
     "status": "Preview Release"
   }
 }

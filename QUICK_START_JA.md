@@ -1,6 +1,6 @@
 # QUICK START
 
-## KidsBlock ESP32 Education Pack Version 0.5 Preview
+## KidsBlock ESP32 Education Pack Version 0.6 Preview
 
 **約10分で使い始めるためのガイド**
 
@@ -21,7 +21,7 @@
 
 ```text
 Installation completed successfully.
-Installed 10 extensions.
+Installed 12 extensions.
 Version: 0.5-Preview
 ```
 
@@ -38,6 +38,14 @@ KidsBlockを起動し、次の10拡張が表示されることを確認します
 - ThingSpeak
 - BLE UART 3
 - ESP-NOW ESP32
+
+### Sensor
+
+- BME280
+
+### Display
+
+- LCD1602 Symbols
 
 ### Other
 

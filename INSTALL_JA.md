@@ -1,6 +1,6 @@
 # インストールガイド
 
-## KidsBlock ESP32 Education Pack Version 0.5 Preview
+## KidsBlock ESP32 Education Pack Version 0.6 Preview
 
 ## 1. インストール前の重要事項
 
@@ -28,7 +28,7 @@
 
 ```text
 Installation completed successfully.
-Installed 10 extensions.
+Installed 12 extensions.
 Version: 0.5-Preview
 ```
 

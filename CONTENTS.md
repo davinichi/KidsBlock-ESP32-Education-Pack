@@ -1,6 +1,6 @@
 # Contents
 
-## KidsBlock ESP32 Education Pack Version 0.5 Preview
+## KidsBlock ESP32 Education Pack Version 0.6 Preview
 
 ## Extensions
 
@@ -13,6 +13,18 @@
 | `extensions/other/thingspeak` | ThingSpeak |
 | `extensions/other/bleuart3` | BLE UART 3 |
 | `extensions/other/espnow_esp32` | ESP-NOW ESP32 |
+
+### Sensor
+
+| Path | Display name |
+|---|---|
+| `extensions/other/bme280` | BME280 |
+
+### Display
+
+| Path | Display name |
+|---|---|
+| `extensions/other/lcd1602_symbols` | LCD1602 Symbols |
 
 ### Other
 

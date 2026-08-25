@@ -1,4 +1,4 @@
-# KidsBlock ESP32 Education Pack Preview License Version 0.5
+# KidsBlock ESP32 Education Pack Preview License Version 0.6
 
 Copyright © 2026 Toshikazu SHIMADA
 
@@ -8,7 +8,7 @@ KidsBlock ESP32 Education Pack（以下「本パッケージ」）は、ESP32を
 
 本パッケージは、KEYESTUDIO社が提供するKidsBlockへESP32向け機能を追加するものであり、KidsBlock本体とは別の追加パッケージです。
 
-Version 0.5 Previewは、Version 1.0公開前の評価・実証用プレリリースです。
+Version 0.6 Previewは、Version 1.0公開前の評価・実証用プレリリースです。
 
 ## 2. 無償で利用できる範囲
 
@@ -57,7 +57,7 @@ Version 0.5 Previewは、Version 1.0公開前の評価・実証用プレリリ�
 
 ## 7. Preview版であること
 
-Version 0.5 Previewは、Version 1.0公開前の評価版です。
+Version 0.6 Previewは、Version 1.0公開前の評価版です。
 
 十分な確認を行っていますが、すべてのPC、Windows環境、KidsBlock、ESP32、周辺機器、ネットワーク環境で正常に動作することを保証するものではありません。
 
@@ -89,4 +89,4 @@ Version 1.0公開時または将来のバージョンで、本ライセンスの
 
 ---
 
-This software is provided free of charge for educational use under the KidsBlock ESP32 Education Pack Preview License Version 0.5.
+This software is provided free of charge for educational use under the KidsBlock ESP32 Education Pack Preview License Version 0.6.
