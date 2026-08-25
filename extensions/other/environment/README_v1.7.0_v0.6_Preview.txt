@@ -1,8 +1,8 @@
 KidsBlock ESP32 Education Pack v0.6 Preview
-Environment Extension v1.7.0
+Environment Extension v1.7.1
 Author: davinichi
 
-New in v1.7.0
+New in v1.7.1
 -------------
 A single dropdown value block can calculate 10 environmental indices from
 temperature (deg C) and relative humidity (%):
@@ -18,8 +18,9 @@ temperature (deg C) and relative humidity (%):
 9. THI                               unit: index
 10. Estimated WBGT (simple)          unit: deg C
 
-Existing individual wet-bulb, simple WBGT, and absolute-humidity blocks are
-kept for backward compatibility.
+Existing individual wet-bulb and simple WBGT blocks are kept for backward compatibility.
+The standalone absolute-humidity block has been removed; absolute humidity remains
+available from the 10-index dropdown block.
 
 Important notes
 ---------------

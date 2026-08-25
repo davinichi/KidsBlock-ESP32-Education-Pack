@@ -1,4 +1,9 @@
 KidsBlock ESP32 Education Pack v0.6 Preview
-Environment v1.7.0
+Environment Extension v1.7.1
 Author: davinichi
-Feature: 10 environmental indices selectable from one dropdown block.
+
+Changes from v1.7.0:
+- Removed the standalone Absolute Humidity block.
+- Absolute Humidity remains available in the 10-index dropdown block.
+- Kept the individual Wet-bulb Temperature and Estimated WBGT blocks for compatibility.
+- Kept LCD1602 unit-symbol blocks, including g/m3, because Absolute Humidity is still selectable as an environmental index.

@@ -62,20 +62,6 @@ function addBlocks (Blockly) {
     }
   };
 
-  Blockly.Blocks.environment_absolute_humidity = {
-    init: function () {
-      this.jsonInit({
-        message0: Blockly.Msg.ENVIRONMENT_ABSOLUTE_HUMIDITY,
-        args0: [
-          {type: 'input_value', name: 'TEMP'},
-          {type: 'input_value', name: 'HUMIDITY'}
-        ],
-        colour: color,
-        extensions: ['output_number']
-      });
-    }
-  };
-
   Blockly.Blocks.environment_wbgt_level = {
     init: function () {
       this.jsonInit({
@@ -96,37 +82,6 @@ function addBlocks (Blockly) {
         args0: [
           {type: 'input_value', name: 'WBGT'}
         ],
-        colour: color,
-        output: 'String'
-      });
-    }
-  };
-
-  Blockly.Blocks.environment_lcd1602_register_symbols = {
-    init: function () {
-      this.jsonInit({
-        message0: Blockly.Msg.ENVIRONMENT_LCD1602_REGISTER_SYMBOLS,
-        colour: color,
-        previousStatement: null,
-        nextStatement: null
-      });
-    }
-  };
-
-  Blockly.Blocks.environment_lcd1602_symbol_degree_c = {
-    init: function () {
-      this.jsonInit({
-        message0: Blockly.Msg.ENVIRONMENT_LCD1602_SYMBOL_DEGREE_C,
-        colour: color,
-        output: 'String'
-      });
-    }
-  };
-
-  Blockly.Blocks.environment_lcd1602_symbol_gm3 = {
-    init: function () {
-      this.jsonInit({
-        message0: Blockly.Msg.ENVIRONMENT_LCD1602_SYMBOL_GM3,
         colour: color,
         output: 'String'
       });
