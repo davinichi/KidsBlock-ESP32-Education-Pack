@@ -1,6 +1,6 @@
 # 教材・サンプル例
 
-## KidsBlock ESP32 Education Pack Version 0.5 Preview
+## KidsBlock ESP32 Education Pack Version 0.6 Preview
 
 ## レベル1：基本操作
 

@@ -22,14 +22,14 @@
 ```text
 Installation completed successfully.
 Installed 12 extensions.
-Version: 0.5-Preview
+Version: 0.6-Preview
 ```
 
 通常は管理者権限を必要としません。Windowsの設定によって実行を止められた場合は、ファイルのプロパティで「許可する」を選択してください。
 
 ## 3. 拡張機能の確認
 
-KidsBlockを起動し、次の10拡張が表示されることを確認します。
+KidsBlockを起動し、次の12拡張が表示されることを確認します。
 
 ### Communication
 

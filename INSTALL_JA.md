@@ -29,7 +29,7 @@
 ```text
 Installation completed successfully.
 Installed 12 extensions.
-Version: 0.5-Preview
+Version: 0.6-Preview
 ```
 
 ## 3. 同意しない場合

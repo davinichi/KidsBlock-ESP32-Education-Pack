@@ -1,8 +1,8 @@
-# Documentation Status — Version 0.5 Preview
+# Documentation Status — Version 0.6 Preview
 
 All files in this pack have been standardized to:
 
-- Version 0.5 Preview
+- Version 0.6 Preview
 - 10 included extensions
 - ESP-NOW ESP32
 - ESP32 System Information

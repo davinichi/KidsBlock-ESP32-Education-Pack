@@ -4,7 +4,7 @@ cd /d "%~dp0"
 
 cls
 echo ============================================================
-echo  KidsBlock ESP32 Education Pack v0.5 Preview
+echo  KidsBlock ESP32 Education Pack v0.6 Preview
 echo ============================================================
 echo.
 echo IMPORTANT NOTICE

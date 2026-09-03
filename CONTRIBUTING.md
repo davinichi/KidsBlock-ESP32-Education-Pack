@@ -25,6 +25,6 @@ The project aims to make ESP32 and IoT programming understandable, practical, an
 - Compatibility testing
 - Pull requests
 
-## Version 0.5 Preview policy
+## Version 0.6 Preview policy
 
 Until Version 1.0, the project prioritizes bug fixes, documentation, installation reliability, and field testing over new features.
